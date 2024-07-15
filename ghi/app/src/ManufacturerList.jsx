@@ -1,7 +1,7 @@
 
 function ManufacturerList(){
     return (
-        <div>Loading</div>
+        <div>Loading Manufacturer List</div>
     )
 }
 
