@@ -1,6 +1,9 @@
 import { useState } from "react";
 
 function ManufacturerForm() {
+
+    // States:
+
     const [manufacturer, setManufacturer] = useState('');
 
 
@@ -23,7 +26,7 @@ function ManufacturerForm() {
         const data = {};
         data.name = manufacturer;
 
-        const url = "http://localhost:8100/api/manufacturers";
+        const url = "http://localhost:8100/api/manufacturers/";
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),
@@ -55,11 +58,12 @@ function ManufacturerForm() {
             <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
                     <h1>Create a new manufacturer</h1>
+
                     <form onSubmit={handleSubmit} id="create-manufacturer-form">
                         <div className="form-floating mb-3">
-                            <input onChange={handleNameChange} value={manufacturer} placeholder="Manufacturer" required type="text" name="manufacturer"
+                            <input onChange={handleNameChange} placeholder="Manufacturer" value={manufacturer} required type="text" name="manufacturer"
                                 id="manufacturer" className="form-control" />
-                            <label htmlFor="manufacturer">Manufacturer</label>
+                            <label htmlFor="manufacturer">Manufacturer name</label>
                         </div>
                         <button type="submit" className="btn btn-primary mt-2">Create</button>
                     </form>

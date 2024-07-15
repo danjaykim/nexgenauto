@@ -35,7 +35,7 @@ function AutoForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const url = "http://localhost:8100/api/automobiles";
+        const url = "http://localhost:8100/api/automobiles/";
 
         const fetchConfig = {
             method: "POST",
