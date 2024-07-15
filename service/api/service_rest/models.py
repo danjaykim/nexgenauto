@@ -1,10 +1,10 @@
 from django.db import models
-from django.urls import reverse
 
 
 class AutomobileVO(models.Model):
     vin = models.CharField(max_length=17, unique=True)
     sold = models.BooleanField(default=False)
+
     def __str__(self):
         return self.vin
 
@@ -16,9 +16,6 @@ class Technician(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
-
-    def get_api_url(self):
-        return reverse("api_technician", kwargs={"pk": self.id})
 
 
 class Appointment(models.Model):
@@ -32,7 +29,7 @@ class Appointment(models.Model):
         Technician,
         related_name="appointment",
         on_delete=models.CASCADE,
-        )
+    )
 
     def __str__(self):
         return f"{self.date_time} {self.customer}"
