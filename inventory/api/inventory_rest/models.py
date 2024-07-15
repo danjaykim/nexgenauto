@@ -5,13 +5,19 @@ from django.urls import reverse
 class Manufacturer(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
+    def __str__(self):
+        return self.name
+
     def get_api_url(self):
         return reverse("api_manufacturer", kwargs={"pk": self.id})
 
 
 class VehicleModel(models.Model):
     name = models.CharField(max_length=100)
-    picture_url = models.URLField()
+    picture_url = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
 
     manufacturer = models.ForeignKey(
         Manufacturer,
@@ -34,6 +40,8 @@ class Automobile(models.Model):
         related_name="automobiles",
         on_delete=models.CASCADE,
     )
+    def __str__(self):
+        return f"{str(self.year)} {self.model.name}"
 
     def get_api_url(self):
         return reverse("api_automobile", kwargs={"vin": self.vin})
