@@ -1,8 +1,8 @@
 
-function TechnicianList(){
+function TechnicianForm(){
     return (
-        <div>Loading Technician List</div>
+        <div>Loading Technician Form</div>
     )
 }
 
-export default TechnicianList
+export default TechnicianForm
