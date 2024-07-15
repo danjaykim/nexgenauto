@@ -29,3 +29,17 @@ def api_technician_list(request):
             response = JsonResponse({"message": "Could not create the Technician"})
             response.status_code = 400
             return response
+
+
+@require_http_methods(["GET", "DELETE"])
+def api_technician_detail(request, pk):
+    if request.method == "GET":
+        tech = Technician.objects.get(id=pk)
+        return JsonResponse(
+            tech,
+            encoder=TechnicianEncoder,
+            safe=False,
+        )
+    else:
+        count, _ = Technician.objects.filter(id=pk).delete()
+        return JsonResponse({"deleted": count > 0})
