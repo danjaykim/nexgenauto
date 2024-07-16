@@ -22,6 +22,7 @@ class AutomobileVOEncoder(ModelEncoder):
 class SalespersonEncoder(ModelEncoder):
     model = Salesperson
     properties = [
+        "id",
         "first_name",
         "last_name",
         "employee_id",
@@ -31,6 +32,7 @@ class SalespersonEncoder(ModelEncoder):
 class CustomerEncoder(ModelEncoder):
     model = Customer
     properties = [
+        "id",
         "first_name",
         "last_name",
         "address",
@@ -41,11 +43,17 @@ class CustomerEncoder(ModelEncoder):
 class SaleEncoder(ModelEncoder):
     model = Sale
     properties = [
+        "id",
         "price",
         "automobile",
         "salesperson",
         "customer",
     ]
+    encoders = {
+        "automobile": AutomobileVO(),
+        "salesperson": SalespersonEncoder(),
+        "customer": CustomerEncoder(),
+    }
 
 
 # ==============================================
@@ -69,3 +77,26 @@ def api_list_salespeople(request):
             encoder=SalespersonEncoder,
             safe=False,
         )
+
+
+@require_http_methods(["GET", "PUT", "DELETE"])
+def api_detail_salesperson(request, id):
+    if request.method == "GET":
+        salesperson = Salesperson.objects.get(id=id)
+        return JsonResponse(
+            salesperson,
+            encoder=SalespersonEncoder,
+            safe=False,
+        )
+    elif request.method == "PUT":
+        updated_content = json.loads(request.body)
+        Salesperson.objects.filter(id=id).update(**updated_content)
+        updated_salesperson = Salesperson.objects.get(id=id)
+        return JsonResponse(
+            updated_salesperson,
+            encoder=SalespersonEncoder,
+            safe=False,
+        )
+    else:  # DELETE
+        count, _ = Salesperson.objects.filter(id=id).delete()
+        return JsonResponse({"deleted": count > 0})
