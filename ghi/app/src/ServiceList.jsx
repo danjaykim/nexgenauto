@@ -89,8 +89,8 @@ function ServiceList(){
                             <td>{ app.time }</td>
                             <td>{ app.technician.first_name } { app.technician.last_name}</td>
                             <td>{ app.reason }</td>
-                            <td><button onClick={() => handleCancel(app.id)}>Cancel</button></td>
-                            <td><button onClick={() => handleFinish(app.id)}>Finish</button></td>
+                            <td><button className="btn btn-danger" onClick={() => handleCancel(app.id)}>Cancel</button></td>
+                            <td><button className="btn btn-success"onClick={() => handleFinish(app.id)}>Finish</button></td>
                             </tr>
                         )}
                     })}
