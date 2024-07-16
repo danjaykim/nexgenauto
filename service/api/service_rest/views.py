@@ -43,3 +43,29 @@ def api_technician_detail(request, pk):
     else:
         count, _ = Technician.objects.filter(id=pk).delete()
         return JsonResponse({"deleted": count > 0})
+
+
+@require_http_methods(["GET", "POST"])
+def api_appointment_list(request):
+    if request.method == "GET":
+        appoint = Appointment.objects.all()
+        return JsonResponse(
+            appoint,
+            encoder=AppointmentEncoder,
+            safe=False,
+        )
+    else:
+        try:
+            content = json.loads(request.body)
+            tech = Technician.objects.get(employee_id=content["technician"])
+            content["technician"] = tech
+            appoint = Appointment.objects.create(**content)
+            return JsonResponse(
+                appoint,
+                encoder=AppointmentEncoder,
+                safe=False,
+            )
+        except Technician.DoesNotExist:
+            response = JsonResponse({"message": "Invalid Technician employee_id"})
+            response.status_code = 400
+            return response
