@@ -50,7 +50,7 @@ def api_appointment_list(request):
     if request.method == "GET":
         appoint = Appointment.objects.all()
         return JsonResponse(
-            appoint,
+            {"appointments": appoint},
             encoder=AppointmentEncoder,
             safe=False,
         )
