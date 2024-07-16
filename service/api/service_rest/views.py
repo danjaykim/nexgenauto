@@ -103,3 +103,14 @@ def api_appointment_cancel(request, pk):
         AppointmentEncoder,
         safe=False,
     )
+
+
+@require_http_methods(["GET"])
+def api_automobile_list(request):
+    if request.method == "GET":
+        autos = AutomobileVO.objects.all()
+        return JsonResponse(
+            {"automobiles": autos},
+            encoder=AutomobileVOEncoder,
+            safe=False,
+        )

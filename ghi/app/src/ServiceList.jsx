@@ -2,14 +2,22 @@ import React, { useEffect, useState } from 'react';
 
 function ServiceList(){
     const [apps, setApps] = useState([])
+    const [autos, setAutos] = useState([])
     const URL = "http://localhost:8080/api/appointments/"
+    const autoURL = "http://localhost:8080/api/automobiles/"
+    const autoVINs = []
     const fetchData = async () => {
         const response = await fetch(URL)
+        const autoresponse = await fetch(autoURL)
         if (response.ok){
             const data = await response.json()
-            console.log(data)
+            const autodata = await autoresponse.json()
             setApps(data.appointments)
-            console.log(apps)
+            const automobiles = autodata.automobiles
+            for (let automobile of automobiles){
+                autoVINs.push(automobile.vin)
+            }
+            setAutos(autoVINs)
         }
     }
     useEffect(() => {fetchData()}, [])
@@ -18,6 +26,10 @@ function ServiceList(){
             <div>Loading Appointment List</div>
         )
     }
+    if(autos === null)
+        return(
+            <div>Loading Automobiles</div>
+    )
     return (
         <>
             <div>
@@ -39,12 +51,17 @@ function ServiceList(){
                 <tbody>
                     {apps.map(app => {
                         if (app.status === "in progress"){
+                            let vip = "No"
+                            if (autos.includes(app.vin)){
+                                vip = "Yes"
+                            }
                             let date = app.date_time.slice(0,10)
                             let time = app.date_time.slice(11,19)
+                            if (app.vin )
                         return (
                             <tr key={app.id}>
                             <td>{ app.vin }</td>
-                            <td>No</td>
+                            <td>{ vip }</td>
                             <td>{ app.customer }</td>
                             <td>{ date }</td>
                             <td>{ time }</td>
