@@ -26,6 +26,30 @@ function ServiceList(){
             <div>Loading Appointment List</div>
         )
     }
+    const handleCancel = async(id) => {
+        // event.preventDefault()
+        const finishURL = `http://localhost:8080/api/appointments/${id}/cancel/`
+        const fetchConfig = {
+            method: "put",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }
+        const response = await fetch(finishURL, fetchConfig)
+        window.location.href = "http://localhost:5173/appointments/"
+    }
+    const handleFinish = async(id) => {
+        // event.preventDefault()
+        const finishURL = `http://localhost:8080/api/appointments/${id}/finish/`
+        const fetchConfig = {
+            method: "put",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }
+        const response = await fetch(finishURL, fetchConfig)
+        window.location.href = "http://localhost:5173/appointments/"
+    }
     if(autos === null)
         return(
             <div>Loading Automobiles</div>
@@ -67,8 +91,8 @@ function ServiceList(){
                             <td>{ time }</td>
                             <td>{ app.technician.first_name } { app.technician.last_name}</td>
                             <td>{ app.reason }</td>
-                            <td>cancel</td>
-                            <td>finish</td>
+                            <td><button onClick={() => handleCancel(app.id)}>Cancel</button></td>
+                            <td><button onClick={() => handleFinish(app.id)}>Finish</button></td>
                             </tr>
                         )}
                     })}
