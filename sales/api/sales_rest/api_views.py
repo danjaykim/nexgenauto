@@ -178,15 +178,8 @@ def api_detail_customer(request, id):
             safe=False,
         )
     else:  # DELETE
-        customer = Customer.objects.get(id=id)
-        if not customer:
-            return JsonResponse(
-                {"message": "Requested Customer does not exist"},
-                status=404,
-            )
-        else:
-            count, _ = Customer.objects.filter(id=id).delete()
-            return JsonResponse({"deleted": count > 0})
+        count, _ = Customer.objects.filter(id=id).delete()
+        return JsonResponse({"deleted": count > 0})
 
 
 # ==============================
