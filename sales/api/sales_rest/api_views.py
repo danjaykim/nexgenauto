@@ -125,3 +125,26 @@ def api_list_customers(request):
             encoder=CustomerEncoder,
             safe=False,
         )
+
+
+@require_http_methods(["GET", "PUT", "DELETE"])
+def api_detail_customer(request, id):
+    if request.method == "GET":
+        customer = Customer.objects.get(id=id)
+        return JsonResponse(
+            customer,
+            encoder=CustomerEncoder,
+            safe=False,
+        )
+    elif request.method == "PUT":
+        updated_content = json.loads(request.body)
+        Customer.objects.filter(id=id).update(**updated_content)
+        updated_customer = Customer.objects.get(id=id)
+        return JsonResponse(
+            updated_customer,
+            encoder=CustomerEncoder,
+            safe=False,
+        )
+    else:  # DELETE
+        count, _ = Customer.objects.filter(id=id).delete()
+        return JsonResponse({"deleted": count > 0})
