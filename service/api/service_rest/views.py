@@ -69,3 +69,17 @@ def api_appointment_list(request):
             response = JsonResponse({"message": "Invalid Technician employee_id"})
             response.status_code = 400
             return response
+
+
+@require_http_methods(["GET", "DELETE"])
+def api_appointment_detail(request, pk):
+    if request.method == "GET":
+        appoint = Appointment.objects.get(id=pk)
+        return JsonResponse(
+            appoint,
+            AppointmentEncoder,
+            safe=False,
+        )
+    else:
+        count, _ = Appointment.objects.filter(id=pk).delete()
+        return JsonResponse({"deleted": count > 0})
