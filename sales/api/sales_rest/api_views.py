@@ -60,6 +60,8 @@ class SaleEncoder(ModelEncoder):
 
 # API views:
 
+# Salespeople:
+
 
 @require_http_methods(["GET", "POST"])
 def api_list_salespeople(request):
@@ -100,3 +102,26 @@ def api_detail_salesperson(request, id):
     else:  # DELETE
         count, _ = Salesperson.objects.filter(id=id).delete()
         return JsonResponse({"deleted": count > 0})
+
+
+# ==============================
+
+# Customers:
+
+
+@require_http_methods(["GET", "POST"])
+def api_list_customers(request):
+    if request.method == "GET":
+        customers = Customer.objects.all()
+        return JsonResponse(
+            {"customers": customers},
+            encoder=CustomerEncoder,
+        )
+    else:  # POST
+        content = json.loads(request.body)
+        new_customer = Customer.objects.create(**content)
+        return JsonResponse(
+            new_customer,
+            encoder=CustomerEncoder,
+            safe=False,
+        )
