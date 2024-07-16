@@ -4,6 +4,8 @@ from .api_views import (
     api_detail_salesperson,
     api_list_customers,
     api_detail_customer,
+    api_list_sales,
+    api_detail_sale,
 )
 
 
@@ -14,4 +16,6 @@ urlpatterns = [
     ),
     path("customers/", api_list_customers, name="api_list_customers"),
     path("customers/<int:id>/", api_detail_customer, name="api_detail_customer"),
+    path("sales/", api_list_sales, name="api_list_sales"),
+    path("sales/<int:id>/", api_detail_sale, name="api_detail_sale"),
 ]
