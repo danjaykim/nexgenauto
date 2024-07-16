@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 function ServiceHistory(){
+    const [search, setSearch] = useState("")
     const [apps, setApps] = useState([])
     const [autos, setAutos] = useState([])
+    let searchTerm = ""
     const URL = "http://localhost:8080/api/appointments/"
     const autoURL = "http://localhost:8080/api/automobiles/"
     const autoVINs = []
@@ -21,6 +23,25 @@ function ServiceHistory(){
         }
     }
     useEffect(() => {fetchData()}, [])
+
+    const searchHandler = (e) => {
+        let upper = e.target.value.toUpperCase()
+        setSearch(upper)
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        const filtered = []
+        searchTerm = search
+        for (let app of apps){
+            if(app.vin === searchTerm){
+                filtered.push(app)
+            }
+        }
+        setSearch("")
+        setApps(filtered)
+    }
+
     if(apps === null){
         return (
             <div>Loading Appointment List</div>
@@ -34,6 +55,11 @@ function ServiceHistory(){
         <>
             <div>
                 <h1 className="display-5 fw-bold">Service Appointments</h1>
+                <form onSubmit={handleSubmit} id="searchBar" className="d-flex">
+                    <input onChange={searchHandler} placeholder="Search By VIN" required type="text" name="vin"
+                        id="searchbar" className="form-control" />
+                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
                 <table className="table table-striped">
                 <thead>
                     <tr>
@@ -54,7 +80,6 @@ function ServiceHistory(){
                             if (autos.includes(app.vin)){
                                 vip = "Yes"
                             }
-                            if (app.vin )
                         return (
                             <tr key={app.id}>
                             <td>{ app.vin }</td>
@@ -67,7 +92,8 @@ function ServiceHistory(){
                             <td>{ app.status }</td>
                             </tr>
                         )}
-                    })}
+                    }
+                    )}
                 </tbody>
                 </table>
             </div>
