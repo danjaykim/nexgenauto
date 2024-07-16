@@ -60,11 +60,7 @@ def api_appointment_list(request):
             tech = Technician.objects.get(employee_id=content["technician"])
             content["technician"] = tech
             appoint = Appointment.objects.create(**content)
-            return JsonResponse(
-                appoint,
-                encoder=AppointmentEncoder,
-                safe=False,
-            )
+            return JsonResponse("created", safe=False)
         except Technician.DoesNotExist:
             response = JsonResponse({"message": "Invalid Technician employee_id"})
             response.status_code = 400

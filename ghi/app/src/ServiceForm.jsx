@@ -7,11 +7,9 @@ function ServiceForm(){
         date: "",
         time: "",
         reason: "",
-        status: "",
         vin: "",
         customer: "",
         technician: "",
-        date_time: "",
     })
     const URL = "http://localhost:8080/api/technicians/"
     const fetchData = async () => {
@@ -27,9 +25,6 @@ function ServiceForm(){
         const value = e.target.value
         const inputName = e.target.name
         setFormData({...formData,[inputName]: value},)
-        // setFormData({...formData, date_time: `${formData.date}T${formdata.time}:00+00:00`})
-    //     if(inputName === "date")
-    //     setFormData({...formData, date_time: `${}T${}:00+00:00`})
     }
 
 
@@ -37,30 +32,27 @@ function ServiceForm(){
         event.preventDefault()
 
         const postUrl = "http://localhost:8080/api/technicians/";
-        // const fetchConfig = {
-        //     method: "post",
-        //     body: JSON.stringify(formData),
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        // }
-        // console.log(formData.date_time)
-        // const response = await fetch(postUrl, fetchConfig)
-        // if (response.ok){
-        //     setFormData({
-        //         date: "",
-        //         time: "",
-        //         reason: "",
-        //         status: "",
-        //         vin: "",
-        //         customer: "",
-        //         technician: "",
-        //         date_time: "",
-        //     })
+        const fetchConfig = {
+            method: "post",
+            body: JSON.stringify(formData),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }
+        const response = await fetch(postUrl, fetchConfig)
+        if (response.ok){
+            setFormData({
+                date: "",
+                time: "",
+                reason: "",
+                vin: "",
+                customer: "",
+                technician: "",
+            })
             // window.location.href = "http://localhost:5173/technicians/"
-        // } else {
-        //     alert("Invalid Employee ID")
-        // }
+        } else {
+            alert("Something went wrong")
+        }
     }
 
 
@@ -71,7 +63,7 @@ function ServiceForm(){
                     <h1>Create a service appointment</h1>
                     <form onSubmit={handleSubmit} id="create-manufacturer-form">
                         <div className="form-floating mb-3">
-                            <input onChange={handleFormChange} placeholder="vin" required type="text" name="VIN"
+                            <input onChange={handleFormChange} placeholder="vin" required type="text" name="vin"
                                 id="manufacturer" className="form-control" />
                             <label htmlFor="manufacturer">VIN</label>
                         </div>
