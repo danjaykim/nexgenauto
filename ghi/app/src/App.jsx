@@ -26,6 +26,7 @@ function App() {
 			<Nav />
 			<div className="container">
 				<Routes>
+					<Route path="/" element={<MainPage />} />
 					<Route path="/manufacturers" element={<ManufacturerList />} />
 					<Route path="/manufacturers/create" element={<ManufacturerForm />} />
 					<Route path="/models" element={<ModelList />} />
