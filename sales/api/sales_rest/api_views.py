@@ -51,3 +51,21 @@ class SaleEncoder(ModelEncoder):
 # ==============================================
 
 # API views:
+
+
+@require_http_methods(["GET", "POST"])
+def api_list_salespeople(request):
+    if request.method == "GET":
+        salespeople = Salesperson.objects.all()
+        return JsonResponse(
+            {"salespeople": salespeople},
+            encoder=SalespersonEncoder,
+        )
+    else:  # POST
+        content = json.loads(request.body)
+        new_salesperson = Salesperson.objects.create(**content)
+        return JsonResponse(
+            new_salesperson,
+            encoder=SalespersonEncoder,
+            safe=False,
+        )
