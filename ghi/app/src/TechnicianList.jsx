@@ -8,9 +8,9 @@ function TechnicianList(){
         const response = await fetch(URL)
         if (response.ok){
             const data = await response.json()
-            console.log(data)
+            // console.log(data)
             setTechs(data.technicians)
-            console.log(techs)
+            // console.log(techs)
         }
     }
     useEffect(() => {fetchData()}, [])

@@ -8,7 +8,7 @@ function TechnicianForm(){
       })
 
 
-      const handleFormChange = (e) => {
+    const handleFormChange = (e) => {
         const value = e.target.value
         const inputName = e.target.name
         setFormData({...formData,[inputName]: value})
@@ -38,8 +38,6 @@ function TechnicianForm(){
         } else {
             alert("Invalid Employee ID")
         }
-
-
     }
 
 

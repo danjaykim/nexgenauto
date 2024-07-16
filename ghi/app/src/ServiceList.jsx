@@ -79,16 +79,14 @@ function ServiceList(){
                             if (autos.includes(app.vin)){
                                 vip = "Yes"
                             }
-                            let date = app.date_time.slice(0,10)
-                            let time = app.date_time.slice(11,19)
                             if (app.vin )
                         return (
                             <tr key={app.id}>
                             <td>{ app.vin }</td>
                             <td>{ vip }</td>
                             <td>{ app.customer }</td>
-                            <td>{ date }</td>
-                            <td>{ time }</td>
+                            <td>{ app.date }</td>
+                            <td>{ app.time }</td>
                             <td>{ app.technician.first_name } { app.technician.last_name}</td>
                             <td>{ app.reason }</td>
                             <td><button onClick={() => handleCancel(app.id)}>Cancel</button></td>

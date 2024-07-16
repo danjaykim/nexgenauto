@@ -20,7 +20,8 @@ class Technician(models.Model):
 
 
 class Appointment(models.Model):
-    date_time = models.DateTimeField()
+    date = models.DateField(auto_now=False, auto_now_add=False)
+    time = models.TimeField(auto_now=False, auto_now_add=False)
     reason = models.CharField(max_length=100)
     status = models.CharField(max_length=100, default="in progress")
     vin = models.CharField(max_length=17)
@@ -33,4 +34,4 @@ class Appointment(models.Model):
     )
 
     def __str__(self):
-        return f"{self.date_time} {self.customer}"
+        return f"{self.date} {self.time} {self.customer}"
