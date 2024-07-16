@@ -7,6 +7,7 @@ function ServiceForm(){
         date: "",
         time: "",
         reason: "",
+        status:"in progress",
         vin: "",
         customer: "",
         technician: "",
@@ -19,7 +20,9 @@ function ServiceForm(){
             setTechs(data.technicians)
         }
     }
-
+    useEffect(() => {
+        fetchData();
+      }, []);
 
     const handleFormChange = (e) => {
         const value = e.target.value
@@ -30,8 +33,8 @@ function ServiceForm(){
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-
-        const postUrl = "http://localhost:8080/api/technicians/";
+        console.log(formData)
+        const postUrl = "http://localhost:8080/api/appointments/";
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(formData),
@@ -49,7 +52,7 @@ function ServiceForm(){
                 customer: "",
                 technician: "",
             })
-            // window.location.href = "http://localhost:5173/technicians/"
+            window.location.href = "http://localhost:5173/appointments/"
         } else {
             alert("Something went wrong")
         }
@@ -78,14 +81,19 @@ function ServiceForm(){
                             <label htmlFor="manufacturer">Date</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input onChange={handleFormChange} placeholder="time" required type="time" name="time"
+                            <input onChange={handleFormChange} placeholder="time" required type="time" step="1" name="time"
                                 id="manufacturer" className="form-control" />
                             <label htmlFor="manufacturer">Time</label>
                         </div>
-                        <div className="form-floating mb-3">
-                            <input onChange={handleFormChange} placeholder="technician" required type="text" name="technician"
-                                id="manufacturer" className="form-control" />
-                            <label htmlFor="manufacturer">Technician</label>
+                        <div className="mb-3">
+                            <select onChange={handleFormChange} required name="technician" id="technician" className="form-select">
+                                <option value="">Choose a Technician</option>
+                                {techs.map(tech => {
+                                return (
+                                    <option key={tech.id} value={tech.employee_id}>{tech.first_name} {tech.last_name}</option>
+                                )
+                                })}
+                            </select>
                         </div>
                         <div className="form-floating mb-3">
                             <input onChange={handleFormChange} placeholder="reason" required type="text" name="reason"
