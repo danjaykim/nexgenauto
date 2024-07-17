@@ -5,8 +5,18 @@
 ##### Max Vuong - Service
 ##### Daniel Kim - Sales
 
-## Design
+## How to setup the project
 ****
+1. fork/clone the repo
+2. run the command `docker volume create beta-data`
+3. run the command `docker-compose build`
+4. run the command `docker-compose up`
+5. your front end page will be accessible at http://localhost:5173/
+
+## Design Diagram
+****
+![The DDD diagram image should be here](./Project-BETA-DDD.PNG)
+
 ## Service microservice
 ****
 ##### Models
