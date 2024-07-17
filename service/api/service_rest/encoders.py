@@ -1,17 +1,5 @@
 from common.json import ModelEncoder
-from json import JSONEncoder
-from datetime import time, date
 from .models import AutomobileVO, Technician, Appointment
-
-
-class DateEncoder(JSONEncoder):
-    def default(self, o):
-        if isinstance(o, date):
-            return o.isoformat()
-        elif isinstance(o, time):
-            return o.isoformat()
-        else:
-            return super().default(o)
 
 
 class AutomobileVOEncoder(ModelEncoder):
@@ -48,6 +36,4 @@ class AppointmentEncoder(ModelEncoder):
     ]
     encoders = {
         "technician": TechnicianEncoder(),
-        "date": DateEncoder(),
-        "time": DateEncoder(),
     }
