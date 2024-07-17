@@ -40,7 +40,7 @@ class Customer(models.Model):
 
 
 class Sale(models.Model):
-    price = models.DecimalField(max_digits=200, decimal_places=2)
+    price = models.CharField(max_length=50)
 
     automobile = models.ForeignKey(
         AutomobileVO,

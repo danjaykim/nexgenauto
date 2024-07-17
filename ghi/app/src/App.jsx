@@ -7,7 +7,7 @@ import ModelList from "./ModelList"
 import ModelForm from "./ModelForm"
 import AutoList from "./AutoList"
 import AutoForm from "./AutoForm"
-import SalesPersonList from "./SalesPersonList"
+import SalesPeopleList from "./SalesPeopleList"
 import SalesPersonForm from "./SalesPersonForm"
 import CustomerList from "./CustomerList"
 import CustomerForm from "./CustomerForm"
@@ -33,7 +33,7 @@ function App() {
 					<Route path="/models/create" element={<ModelForm />} />
 					<Route path="/automobiles" element={<AutoList />} />
 					<Route path="/automobiles/create" element={<AutoForm />} />
-					<Route path="/salespeople" element={<SalesPersonList />} />
+					<Route path="/salespeople" element={<SalesPeopleList />} />
 					<Route path="/salespeople/create" element={<SalesPersonForm />} />
 					<Route path="/customers" element={<CustomerList />} />
 					<Route path="/customers/create" element={<CustomerForm />} />
