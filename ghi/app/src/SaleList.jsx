@@ -31,7 +31,7 @@ export default function SalesList() {
 
     return (
         <div>
-            <h1 className="mt-4 mb-3">Sales</h1>
+            <h1 className="mt-4 mb-3">Sales History</h1>
             <table className="table table-striped table-hover">
                 <thead>
                     <tr>
