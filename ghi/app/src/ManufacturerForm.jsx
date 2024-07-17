@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function ManufacturerForm() {
+export default function ManufacturerForm() {
 
     // States:
 
@@ -58,7 +58,6 @@ function ManufacturerForm() {
             <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
                     <h1>Create a new manufacturer</h1>
-
                     <form onSubmit={handleSubmit} id="create-manufacturer-form">
                         <div className="form-floating mb-3">
                             <input onChange={handleNameChange} placeholder="Manufacturer" value={manufacturer} required type="text" name="manufacturer"
@@ -67,11 +66,8 @@ function ManufacturerForm() {
                         </div>
                         <button type="submit" className="btn btn-primary mt-2">Create</button>
                     </form>
-
                 </div>
             </div>
         </div>
     )
 }
-
-export default ManufacturerForm
