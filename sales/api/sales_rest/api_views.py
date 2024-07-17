@@ -230,7 +230,6 @@ def api_detail_sale(request, id):
         return JsonResponse(
             {"sale": sale},
             encoders=SaleEncoder,
-            safe=False,
         )
     elif request.method == "PUT":
         updated_content = json.loads(request.body)
