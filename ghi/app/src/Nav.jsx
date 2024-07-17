@@ -20,7 +20,7 @@ export default function Nav() {
                 <hr className="dropdown-divider"></hr>
                 <Link className="dropdown-item" aria-current="page" to="/models">Models</Link>
                 <Link className="dropdown-item" aria-current="page" to="/models/create">Create a model</Link>
-                <hr className="dropdown-divider"></hr>
+                <hr className="dropdown-divider" />
                 <Link className="dropdown-item" aria-current="page" to="/automobiles">Automobiles</Link>
                 <Link className="dropdown-item" aria-current="page" to="/automobiles/create">Create an Automobile</Link>
               </ul>
@@ -33,10 +33,11 @@ export default function Nav() {
                 <hr className="dropdown-divider"></hr>
                 <Link className="dropdown-item" aria-current="page" to="/customers">Customers</Link>
                 <Link className="dropdown-item" aria-current="page" to="/customers/create">Add a Customer</Link>
-                <hr className="dropdown-divider"></hr>
+                <hr className="dropdown-divider" />
                 <Link className="dropdown-item" aria-current="page" to="/sales">Sales</Link>
-                <Link className="dropdown-item" aria-current="page" to="/sales/history">Sales History</Link>
                 <Link className="dropdown-item" aria-current="page" to="/sales/create">Add a Sale</Link>
+                <hr className="dropdown-divider" />
+                <Link className="dropdown-item" aria-current="page" to="/sales/history">Sales History</Link>
               </ul>
             </li>
             <li className="nav-item dropdown">
@@ -47,6 +48,7 @@ export default function Nav() {
                 <hr className="dropdown-divider"></hr>
                 <Link className="dropdown-item" aria-current="page" to="/appointments">Service Appointments</Link>
                 <Link className="dropdown-item" aria-current="page" to="/appointments/create">Create a Service Appointment</Link>
+                <hr className="dropdown-divider" />
                 <Link className="dropdown-item" aria-current="page" to="/appointments/history">Service History</Link>
               </ul>
             </li>

@@ -111,9 +111,7 @@ export default function SaleForm() {
             <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
                     <h1>Record a new sale</h1>
-
                     <form onSubmit={handleSubmit} id="create-sale-form">
-
                         <div className="mb-3">
                             <label htmlFor="automobile">Automobile VIN</label>
                             <select onChange={handleFormChange} value={formData.automobile} required name="automobile" id="automobile" className="form-select">
@@ -127,7 +125,6 @@ export default function SaleForm() {
                                 })};
                             </select>
                         </div>
-
                         <div className="mb-3">
                             <label htmlFor="salesperson">Salesperson</label>
                             <select onChange={handleFormChange} value={formData.salesperson} required name="salesperson" id="salesperson" className="form-select">
@@ -141,7 +138,6 @@ export default function SaleForm() {
                                 })};
                             </select>
                         </div>
-
                         <div className="mb-3">
                             <label htmlFor="customer">Customer</label>
                             <select onChange={handleFormChange} value={formData.customer} required name="customer" id="customer" className="form-select">
@@ -155,17 +151,13 @@ export default function SaleForm() {
                                 })};
                             </select>
                         </div>
-
                         <div className="form-floating mb-3">
                             <input onChange={handleFormChange} value={formData.price} placeholder="price" required type="number" name="price"
                                 id="price" className="form-control" />
                             <label htmlFor="price">Price</label>
                         </div>
-
                         <button type="submit" className="btn btn-primary mt-2">Create</button>
-
                     </form>
-
                 </div>
             </div>
         </div>
