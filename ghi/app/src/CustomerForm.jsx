@@ -88,7 +88,7 @@ export default function CustomerForm() {
                         <div className="form-floating mb-3">
                             <input onChange={handleFormChange} value={formData.phone_number} placeholder="Phone number" required type="text" name="phone_number" id="phone_number"
                                 className="form-control" />
-                            <label htmlFor="phone_number">Phone number</label>
+                            <label htmlFor="phone_number">Phone number (XXX-XXX-XXXX)</label>
                         </div>
                         <button type="submit" className="btn btn-primary mt-2">Create</button>
                     </form>
