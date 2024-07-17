@@ -50,7 +50,7 @@ class SaleEncoder(ModelEncoder):
         "customer",
     ]
     encoders = {
-        "automobile": AutomobileVO(),
+        "automobile": AutomobileVOEncoder(),
         "salesperson": SalespersonEncoder(),
         "customer": CustomerEncoder(),
     }
@@ -189,14 +189,6 @@ def api_detail_customer(request, id):
 
 @require_http_methods(["GET", "POST"])
 def api_list_sales(request):
-    try:
-        sales = Sale.objects.all()
-    except Sale.DoesNotExist:
-        return JsonResponse(
-            {"message": "Requested list of sales does not exist"},
-            status=404,
-        )
-
     if request.method == "GET":
         sales = Sale.objects.all()
         return JsonResponse(
@@ -210,6 +202,7 @@ def api_list_sales(request):
             content["automobile"] = AutomobileVO.objects.get(vin=content["automobile"])
             content["salesperson"] = Salesperson.objects.get(id=content["salesperson"])
             content["customer"] = Customer.objects.get(id=content["customer"])
+
         except AutomobileVO.DoesNotExist:
             return JsonResponse({"message": "Invalid VIN number"}, status=400)
         except Salesperson.DoesNotExist:
@@ -218,10 +211,10 @@ def api_list_sales(request):
             return JsonResponse({"message": "Invalid Customer ID"}, status=400)
 
         new_sale = Sale.objects.create(**content)
+        # return JsonResponse("created", safe=False)
         return JsonResponse(
-            new_sale,
-            encoders=SaleEncoder,
-            safe=False,
+            {"sale": new_sale},
+            encoder=SaleEncoder,
         )
 
 
@@ -235,8 +228,8 @@ def api_detail_sale(request, id):
     if request.method == "GET":
         sale = Sale.objects.get(id=id)
         return JsonResponse(
-            {"sale": sale},
-            encoders=SaleEncoder,
+            sale,
+            encoder=SaleEncoder,
             safe=False,
         )
     elif request.method == "PUT":
