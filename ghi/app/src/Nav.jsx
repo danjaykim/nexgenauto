@@ -2,7 +2,7 @@ import { NavLink, Link } from 'react-router-dom';
 
 export default function Nav() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary text-white">
       <div className="container-fluid">
         <NavLink className="navbar-brand fw-bold" to="/">CarCar</NavLink>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,7 +14,7 @@ export default function Nav() {
 
             <li className="nav-item dropdown">
               <NavLink className="nav-link dropdown-toggle fw-medium" aria-current="page" data-bs-toggle="dropdown" to="#" aria-expanded="false">Inventory</NavLink>
-              <ul className="dropdown-menu">
+              <ul className="dropdown-menu bg-primary text-white">
                 <Link className="dropdown-item" aria-current="page" to="/manufacturers">Manufacturers</Link>
                 <Link className="dropdown-item" aria-current="page" to="/manufacturers/create">Create a Manufacturer</Link>
                 <hr className="dropdown-divider"></hr>
@@ -27,7 +27,7 @@ export default function Nav() {
             </li>
             <li className="nav-item dropdown">
               <NavLink className="nav-link dropdown-toggle fw-medium" aria-current="page" data-bs-toggle="dropdown" to="#" aria-expanded="false">Sales</NavLink>
-              <ul className="dropdown-menu">
+              <ul className="dropdown-menu bg-primary text-white">
                 <Link className="dropdown-item" aria-current="page" to="/salespeople">Salespeople</Link>
                 <Link className="dropdown-item" aria-current="page" to="/salespeople/create">Add a Salesperson</Link>
                 <hr className="dropdown-divider"></hr>
@@ -41,7 +41,7 @@ export default function Nav() {
             </li>
             <li className="nav-item dropdown">
               <NavLink className="nav-link dropdown-toggle fw-medium" aria-current="page" data-bs-toggle="dropdown" to="#" aria-expanded="false">Services</NavLink>
-              <ul className="dropdown-menu">
+              <ul className="dropdown-menu bg-primary text-white">
                 <Link className="dropdown-item" aria-current="page" to="/technicians">Technicians</Link>
                 <Link className="dropdown-item" aria-current="page" to="/technicians/create">Add a Technician</Link>
                 <hr className="dropdown-divider"></hr>
