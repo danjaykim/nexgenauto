@@ -2,7 +2,12 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
-from .encoders import AutomobileVOEncoder, TechnicianEncoder, AppointmentEncoder
+from .encoders import (
+    AutomobileVOEncoder,
+    TechnicianEncoder,
+    AppointmentEncoder,
+    AppointmentPOSTEncoder,
+)
 from .models import AutomobileVO, Technician, Appointment
 
 # Create your views here.
@@ -62,7 +67,7 @@ def api_appointment_list(request):
             appoint = Appointment.objects.create(**content)
             return JsonResponse(
                 appoint,
-                encoder=AppointmentEncoder,
+                encoder=AppointmentPOSTEncoder,
                 safe=False,
             )
         except Technician.DoesNotExist:
