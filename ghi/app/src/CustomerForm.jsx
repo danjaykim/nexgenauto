@@ -37,7 +37,7 @@ export default function CustomerForm() {
             method: "POST",
             body: JSON.stringify(formData),
             headers: { "Content-Type": "application/json" },
-        }
+        };
 
         try {
             const customerResponse = await fetch(customersUrl, fetchConfig);

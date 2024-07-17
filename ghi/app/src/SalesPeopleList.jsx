@@ -29,6 +29,10 @@ export default function SalesPersonList() {
 
     // JSX:
 
+    if (salespeople === null) {
+        return <div>Loading...</div>
+    }
+
     return (
         <div>
             <h1 className="mt-4 mb-3">Salespeople</h1>

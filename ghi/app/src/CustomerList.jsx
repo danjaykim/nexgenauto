@@ -29,6 +29,10 @@ export default function CustomerList() {
 
     // JSX:
 
+    if (customers === null) {
+        return <div>Loading...</div>
+    }
+
     return (
         <div>
             <h1 className="mt-4 mb-3">Customers</h1>

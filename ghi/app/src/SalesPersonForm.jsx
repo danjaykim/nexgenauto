@@ -40,7 +40,7 @@ export default function SalesPersonForm() {
             method: "POST",
             body: JSON.stringify(formData),
             headers: { "Content-Type": "application/json" },
-        }
+        };
 
         try {
             const salespersonResponse = await fetch(salespeopleUrl, fetchConfig);

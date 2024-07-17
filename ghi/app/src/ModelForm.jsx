@@ -39,7 +39,7 @@ function ModelForm() {
             method: "POST",
             body: JSON.stringify(formData),
             headers: { "Content-Type": "application/json" },
-        }
+        };
 
         try {
             const response = await fetch(url, fetchConfig);

@@ -1,8 +1,27 @@
 
-function SalesList(){
+
+
+export default function SalesList() {
+
+
+
+    // ===================================
+
+
+
+    // ===================================
+
+
+
+    // ===================================
+
+
+
+    // ===================================
+
+    // JSX:
+
     return (
         <div>Loading Sales List</div>
     )
 }
-
-export default SalesList
