@@ -228,8 +228,9 @@ def api_detail_sale(request, id):
     if request.method == "GET":
         sale = Sale.objects.get(id=id)
         return JsonResponse(
-            {"sale": sale},
-            encoders=SaleEncoder,
+            sale,
+            encoder=SaleEncoder,
+            safe=False,
         )
     elif request.method == "PUT":
         updated_content = json.loads(request.body)
