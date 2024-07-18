@@ -110,7 +110,7 @@ The Sales microservice provides a wide range of functionality by managing and or
 | Update details of a specific salesperson | PUT | http://localhost:8090/api/salesperson/:id/
 | Delete a specific salesperson | DELETE | http://localhost:8090/api/salesperson/:id/
 <br>
-> *All salespeople ID's are be provided at: http://localhost:8090/api/salespeople/*
+*All salespeople ID's are be provided at: http://localhost:8090/api/salespeople/*
 
 <br>
 
@@ -197,7 +197,7 @@ To show the **details of a specific Salesperson**, send a GET request to http://
 | Update details of a specific customer | PUT | http://localhost:8090/api/customers/:id/
 | Delete a specific customer | DELETE | http://localhost:8090/api/customers/:id/
 <br>
-> *All customer ID's are be provided at: http://localhost:8090/api/customers/*
+*All customer ID's are be provided at: http://localhost:8090/api/customers/*
 
 <br>
 
@@ -289,7 +289,7 @@ To show the **details of a specific Customer**, send a GET request to http://loc
 | Update details of a specific sale | GET | http://localhost:8090/api/sales/:id/
 | Delete a specific sale | GET | http://localhost:8090/api/sales/:id/
 <br>
-> *All sales ID's are be provided at: http://localhost:8090/api/sales/*
+*All sales ID's are be provided at: http://localhost:8090/api/sales/*
 
 <br>
 
