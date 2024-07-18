@@ -63,14 +63,16 @@ all automobile data is pulled from the Inventory microservice
 - PUT: sets the appointment at the specified database ID to finished
 
 ## Sales microservice
-****
+
+<br>
 
 There are three key components utilized in this project:
 1. **React (Front-end)** - A powerful Javascript library used to build and render single page applications (SPA). We will be taking advantage of React's component based architecture to render dynamic (on demand) pages such as lists and forms by assembling components and managing states.
 2. **API (Back-end)** -- A Django application with a project named `sales_project` and an application (app) named `sales_rest` that uses the REST Framework. This will be built on our models and API views that handle a multitude of the server-side duties.
-3. **Poller** -- An application that creates or updates an `AutomobileVO` object to the microservice database and retrieves automobile data from the Inventory API every 60 seconds.
+3. **Poller** -- An application that creates or updates an `AutomobileVO` object to the microservice database and retrieves automobile data from the Inventory API every 60 seconds. 
 
-The Sales microservice provides a wide range of functionality by managing and organizing the data of four models on the backend (server-side):
+
+The Sales microservice provides a wide range of functionality by managing and organizing the data of four models on the back-end (server-side):
 
 **Automobile** - A value object representing all of our automobiles/vehicles. All automobile data is pulled from the Inventory microservice
 - vin -- The vehicle identification number of the automobile
@@ -93,6 +95,7 @@ The Sales microservice provides a wide range of functionality by managing and or
 - customer -- Foreign key linked to the customer who purchased the vehicle
 - price -- The cost in USD the vehicle was purchased for
 
+<br>
 
 ## Sales Microservice API
 **Port 8090 (Access through an API client of your choice such as Insomnia or Thunderclient)**
@@ -105,77 +108,83 @@ The Sales microservice provides a wide range of functionality by managing and or
 | Details of a specific salesperson | GET | http://localhost:8090/api/salesperson/:id/
 | Update details of a specific salesperson | PUT | http://localhost:8090/api/salesperson/:id/
 | Delete a specific salesperson | DELETE | http://localhost:8090/api/salesperson/:id/
-*All salespeople ID's are be provided at: http://localhost:8090/api/salespeople/*
+<br>
+>*All salespeople ID's are be provided at: http://localhost:8090/api/salespeople/*
 
 
 To **create** a Salesperson (send this to the JSON body):
 ```
 {
-	"first_name": "Mookie",
-	"last_name": "Betts",
-	"employee_id": "mbetts" 
+  "first_name": "Mookie",
+  "last_name": "Betts",
+  "employee_id": "mbetts" 
 }
 ```
 Return value of creating a Salesperson:
 ```
 {
-	"id": 1,
-	"first_name": "Mookie",
-	"last_name": "Betts",
-	"employee_number": "mbetts"
+  "id": 1,
+  "first_name": "Mookie",
+  "last_name": "Betts",
+  "employee_number": "mbetts"
 }
 ```
 Return value of **listing all Salespeople**:
 ```
 {
-	"salespeople": [
-		{
-		    "id": 1,
-			"first_name": "Mookie",
-			"last_name": "Betts",
-            "employee_id": "mbetts"
-		},
-		{
-		    "id": 2,
-			"first_name": "Karissa",
-			"last_name": "Pierre",
-			"employee_id": "kpierre"
-		}
-	]
+  "salespeople": [
+    {
+      "id": 1,
+      "first_name": "Mookie",
+      "last_name": "Betts",
+      "employee_id": "mbetts"
+    },
+    {
+      "id": 2,
+      "first_name": "Karissa",
+      "last_name": "Pierre",
+      "employee_id": "kpierre"
+    }
+  ]
 }
 ```
 To **update** the detail(s) of a specific Salesperson (make any adjustments within the boundaries of the model field type):
 ```
 {
-    "last_name": "Johnson",
-    "employee_id": "kjohnson"
+  "last_name": "Johnson",
+  "employee_id": "kjohnson"
 }
 ```
 Return value of updating the detail(s) of a specific Salesperson:
 ```
 {
-    "id": 2,
-    "first_name": "Karissa",
-    "last_name": "Johnson",
-    "employee_id": "kjohnson"
+  "id": 2,
+  "first_name": "Karissa",
+  "last_name": "Johnson",
+  "employee_id": "kjohnson"
 }
 ```
 
 To **delete** a Salesperson, send a DELETE request to http://localhost:8090/api/salespeople/:id/
+<br>
 *Note: Replace `:id` with the specified salesperson ID you would like deleted.*
+<br>
 *All salesperson ID's can be provided at: http://localhost:8090/api/salespeople/*
 
 Return value of deleting a specific Salesperson:
 ```
 {
-    "deleted": true
+  "deleted": true
 }
 ```
 
 To show the **details of a specific Salesperson**, send a GET request to http://localhost:8090/api/salespeople/:id/
+<br>
 *Note: Replace `:id` with the specified salesperson ID you would like view.*
+<br>
 *All salespeople ID's can be provided at: http://localhost:8090/api/salespeople/*
 
+<br>
 
 ### Customers:
 | Action | Method | URL
@@ -185,80 +194,86 @@ To show the **details of a specific Salesperson**, send a GET request to http://
 | Details of a specific customer | GET | http://localhost:8090/api/customers/:id/
 | Update details of a specific customer | PUT | http://localhost:8090/api/customers/:id/
 | Delete a specific customer | DELETE | http://localhost:8090/api/customers/:id/
-*All customer ID's are be provided at: http://localhost:8090/api/customers/*
+<br>
+>*All customer ID's are be provided at: http://localhost:8090/api/customers/*
 
 To **create** a Customer (send this to the JSON body):
 ```
 {
-	"first_name": "Bailey",
-	"last_name": "Dakota",
-	"address": "3505 Cherry Lane, Los Angeles, CA 90020",
-	"phone_number": "323-123-1234"
+  "first_name": "Bailey",
+  "last_name": "Dakota",
+  "address": "3505 Cherry Lane, Los Angeles, CA 90020",
+  "phone_number": "323-123-1234"
 }
 ```
 Return value of creating a Customer:
 ```
 {
-    "id": 1,
-    "first_name": "Bailey",
-    "last_name": "Dakota",
-    "address": "3505 Cherry Lane, Los Angeles, CA 90020",
-    "phone_number": "323-123-1234"
+  "id": 1,
+  "first_name": "Bailey",
+  "last_name": "Dakota",
+  "address": "3505 Cherry Lane, Los Angeles, CA 90020",
+  "phone_number": "323-123-1234"
 }
 ```
 Return value of **listing all Customers**:
 ```
 {
-	"customers": [
-		{
-		    "id": 1,
-			"first_name": "Bailey",
-			"last_name": "Dakota",
-			"address": "3505 Cherry Lane, Los Angeles, CA 90020",
-			"phone_number": "323-123-1234"
-		},
-		{
-		    "id": 2,
-			"first_name": "Devin",
-			"last_name": "Gates",
-			"address": "623 Cottage Ave, Albany, NY 12203",
-			"phone_number": "932-654-8342"
-		}
-	]
+  "customers": [
+    {
+      "id": 1,
+      "first_name": "Bailey",
+      "last_name": "Dakota",
+      "address": "3505 Cherry Lane, Los Angeles, CA 90020",
+      "phone_number": "323-123-1234"
+    },
+    {
+      "id": 2,
+      "first_name": "Devin",
+      "last_name": "Gates",
+      "address": "623 Cottage Avenue, Albany, NY 12203",
+      "phone_number": "932-654-8342"
+    }
+  ]
 }
 ```
 To **update** the detail(s) of a specific Customer (make any adjustments within the boundaries of the model field type):
 
 ```
 {
-    "address": "5311 Fairview Avenue, Anaheim, CA 92805"
+  "address": "5311 Fairview Avenue, Anaheim, CA 92805"
 }
 ```
 Return value of updating the detail(s) of a specific Customer:
 ```
 {
-    "id": 1,
-    "first_name": "Bailey",
-    "last_name": "Dakota",
-    "address": "5311 Fairview Avenue, Anaheim, CA 92805",
-    "phone_number": "323-123-1234"
+  "id": 1,
+  "first_name": "Bailey",
+  "last_name": "Dakota",
+  "address": "5311 Fairview Avenue, Anaheim, CA 92805",
+  "phone_number": "323-123-1234"
 }
 ```
 
 To **delete** a Customer, send a DELETE request to http://localhost:8090/api/customers/:id/
+<br>
 *Note: Replace `:id` with the specified customer ID you would like deleted.*
+<br>
 *All customer ID's can be provided at: http://localhost:8090/api/customers/*
 
 Return value of deleting a specific Customer:
 ```
 {
-    "deleted": true
+  "deleted": true
 }
 ```
 To show the **details of a specific Customer**, send a GET request to http://localhost:8090/api/customers/:id/
+<br>
 *Note: Replace `:id` with the specified customer ID you would like view.*
+<br>
 *All customer ID's can be provided at: http://localhost:8090/api/customers/*
 
+<br>
 
 ### Sales records:
 
@@ -269,7 +284,8 @@ To show the **details of a specific Customer**, send a GET request to http://loc
 | Details of a specific sale | GET | http://localhost:8090/api/sales/:id/
 | Update details of a specific sale | GET | http://localhost:8090/api/sales/:id/
 | Delete a specific sale | GET | http://localhost:8090/api/sales/:id/
-*All sales ID's are be provided at: http://localhost:8090/api/sales/*
+<br>
+>*All sales ID's are be provided at: http://localhost:8090/api/sales/*
 
 To **create** a Sale (send this to the JSON body):
 ```
@@ -290,29 +306,29 @@ To **create** a Sale (send this to the JSON body):
 Return value of **listings all Sales**:
 ```
 {
-	"sales": [
-		{
-			"id": 1,
-			"price": "94000",
-			"automobile": {
-				"vin": "4T1BE32K66U134020",
-				"sold": true
-			},
-			"salesperson": {
-				"id": 1,
-				"first_name": "Mookie",
-				"last_name": "Betts",
-				"employee_id": "mbetts"
-			},
-			"customer": {
-			    "id": 2,
-				"first_name": "Devin",
-				"last_name": "Gates",
-				"address": "623 Cottage Ave, Albany, NY 12203",
-				"phone_number": "932-654-8342"
-			}
-		}
-	]
+  "sales": [
+    {
+      "id": 1,
+      "price": "94000",
+      "automobile": {
+        "vin": "4T1BE32K66U134020",
+        "sold": true
+      },
+      "salesperson": {
+        "id": 1,
+        "first_name": "Mookie",
+        "last_name": "Betts",
+        "employee_id": "mbetts"
+      },
+      "customer": {
+        "id": 2,
+        "first_name": "Devin",
+        "last_name": "Gates",
+        "address": "623 Cottage Avenue, Albany, NY 12203",
+        "phone_number": "932-654-8342"
+      }
+    }
+  ]
 }
 ```
 
@@ -325,36 +341,38 @@ To **update** the detail(s) of a specific Sale (make any adjustments within the 
 Return value of updating the detail(s) of a specific Sale:
 ```
 {
-	"sales": [
-		{
-			"id": 1,
-			"price": "97000",
-			"automobile": {
-				"vin": "4T1BE32K66U134020",
-				"sold": true
-			},
-			"salesperson": {
-				"id": 1,
-				"first_name": "Mookie",
-				"last_name": "Betts",
-				"employee_id": "mbetts"
-			},
-			"customer": {
-			    "id": 2,
-				"first_name": "Devin",
-				"last_name": "Gates",
-				"address": "623 Cottage Ave, Albany, NY 12203",
-				"phone_number": "932-654-8342"
-			}
-		}
-	]
+  "id": 1,
+  "price": "97000",
+  "automobile": {
+    "vin": "4T1BE32K66U134020",
+    "sold": true
+  },
+  "salesperson": {
+    "id": 1,
+    "first_name": "Mookie",
+    "last_name": "Betts",
+    "employee_id": "mbetts"
+  },
+  "customer": {
+    "id": 2,
+    "first_name": "Devin",
+    "last_name": "Gates",
+    "address": "623 Cottage Avenue, Albany, NY 12203",
+    "phone_number": "932-654-8342"
+  }
 }
 ```
 
 To show the **details of a specific sale**, send a GET request to http://localhost:8090/api/sales/:id/
+<br>
 *Note: Replace `:id` with the specified sale ID you would like to view.*
+<br>
 *All sales ID's can be provided at: http://localhost:8090/api/sales/*
 
+<br>
+
 To **delete** a Sale, send a DELETE request to http://localhost:8090/api/sales/:id/
+<br>
 *Note: Replace `:id` with the specified sale ID you would like deleted.*
+<br>
 *All sales ID's can be provided at: http://localhost:8090/api/sales/*
