@@ -202,7 +202,6 @@ def api_list_sales(request):
             content["automobile"] = AutomobileVO.objects.get(vin=content["automobile"])
             content["salesperson"] = Salesperson.objects.get(id=content["salesperson"])
             content["customer"] = Customer.objects.get(id=content["customer"])
-
         except AutomobileVO.DoesNotExist:
             return JsonResponse({"message": "Invalid VIN number"}, status=400)
         except Salesperson.DoesNotExist:

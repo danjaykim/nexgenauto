@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function AutoForm() {
 
-    // States:
+    // States / Hooks:
 
     const [formData, setFormData] = useState({
         color: '',
@@ -13,6 +14,7 @@ export default function AutoForm() {
     })
 
     const [vehicleModels, setVehicleModels] = useState([]);
+    const navigate = useNavigate();
 
     // =================================
 
@@ -46,9 +48,6 @@ export default function AutoForm() {
         try {
             const response = await fetch(url, fetchConfig);
             if (response.ok) {
-                const newAutomobile = await response.json();
-                console.log(newAutomobile);
-
                 // Reset fields after successful POST:
                 setFormData({
                     color: '',
@@ -56,6 +55,8 @@ export default function AutoForm() {
                     vin: '',
                     model_id: '',
                 })
+
+                navigate("/automobiles")
             } else {
                 const errorDetails = await response.json();
                 console.error(`Response status: ${response.status} ${response.statusText} // Error detail: ${errorDetails}`);

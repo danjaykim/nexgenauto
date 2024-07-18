@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CustomerForm() {
 
-    // States:
+    // States / Hooks:
 
     const [formData, setFormData] = useState({
         first_name: '',
@@ -10,6 +11,8 @@ export default function CustomerForm() {
         address: '',
         phone_number: '',
     });
+
+    const navigate = useNavigate();
 
     // ==================================
 
@@ -42,15 +45,14 @@ export default function CustomerForm() {
         try {
             const customerResponse = await fetch(customersUrl, fetchConfig);
             if (customerResponse.ok) {
-                const newCustomer = await customerResponse.json();
-                console.log(newCustomer);
-
                 setFormData({
                     first_name: '',
                     last_name: '',
                     address: '',
                     phone_number: '',
                 })
+
+                navigate("/customers")
             } else {
                 const errorDetail = await customerResponse.json();
                 console.error(`Response status: ${customerResponse.status} ${customerResponse.statusText} // Error details: ${errorDetail}`);

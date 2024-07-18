@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 
 export default function ModelForm() {
 
-    // States:
+    // States / Hooks:
 
     const [formData, setFormData] = useState({
         name: '',
@@ -12,6 +12,7 @@ export default function ModelForm() {
     });
 
     const [manufacturers, setManufacturers] = useState([]);
+    const navigate = useNavigate();
 
     // ============================================
 
@@ -44,15 +45,14 @@ export default function ModelForm() {
         try {
             const response = await fetch(url, fetchConfig);
             if (response.ok) {
-                const newModel = await response.json();
-                console.log(newModel);
-
                 // Reset fields after successful POST:
                 setFormData({
                     name: '',
                     picture_url: '',
                     manufacturer_id: '',
                 })
+
+                navigate("/models")
             } else {
                 const errorDetails = await response.json();
                 console.error(`Response status: ${response.status} ${response.statusText} // Error Detail: ${errorDetails}`);

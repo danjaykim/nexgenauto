@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 export default function ManufacturerForm() {
 
-    // States:
+    // States / Hooks:
 
     const [manufacturer, setManufacturer] = useState('');
-
+    const navigate = useNavigate();
 
     // ==========================================
 
@@ -36,10 +38,8 @@ export default function ManufacturerForm() {
         try {
             const response = await fetch(url, fetchConfig);
             if (response.ok) {
-                const newManufacturer = await response.json();
-                console.log(newManufacturer);
-
                 setManufacturer('');
+                navigate("/manufacturers")
             } else {
                 const errorDetails = await response.json();
                 console.error(`Response status: ${response.status} ${response.statusText} // Error detail: ${errorDetails}`);

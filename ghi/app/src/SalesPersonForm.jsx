@@ -1,16 +1,18 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 
 
 export default function SalesPersonForm() {
 
-    // States:
+    // States / Hooks:
 
     const [formData, setFormData] = useState({
         first_name: '',
         last_name: '',
         employee_id: '',
     });
+
+    const navigate = useNavigate();
 
     // ==============================================
 
@@ -43,15 +45,14 @@ export default function SalesPersonForm() {
         try {
             const salespersonResponse = await fetch(salespeopleUrl, fetchConfig);
             if (salespersonResponse.ok) {
-                const newSalesperson = await salespersonResponse.json();
-                console.log(newSalesperson);
-
                 // Reset fields after successful POST:
                 setFormData({
                     first_name: '',
                     last_name: '',
                     employee_id: '',
                 })
+
+                navigate("/salespeople")
             } else {
                 const errorDetail = await salespersonResponse.json();
                 console.error(`Response status: ${salespersonResponse.status} ${salespersonResponse.statusText} // Error Details: ${errorDetail}`);
