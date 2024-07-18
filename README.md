@@ -71,6 +71,7 @@ There are three key components utilized in this project:
 2. **API (Back-end)** -- A Django application with a project named `sales_project` and an application (app) named `sales_rest` that uses the REST Framework. This will be built on our models and API views that handle a multitude of the server-side duties.
 3. **Poller** -- An application that creates or updates an `AutomobileVO` object to the microservice database and retrieves automobile data from the Inventory API every 60 seconds. 
 
+<br>
 
 The Sales microservice provides a wide range of functionality by managing and organizing the data of four models on the back-end (server-side):
 
@@ -109,8 +110,9 @@ The Sales microservice provides a wide range of functionality by managing and or
 | Update details of a specific salesperson | PUT | http://localhost:8090/api/salesperson/:id/
 | Delete a specific salesperson | DELETE | http://localhost:8090/api/salesperson/:id/
 <br>
->*All salespeople ID's are be provided at: http://localhost:8090/api/salespeople/*
+> *All salespeople ID's are be provided at: http://localhost:8090/api/salespeople/*
 
+<br>
 
 To **create** a Salesperson (send this to the JSON body):
 ```
@@ -195,7 +197,9 @@ To show the **details of a specific Salesperson**, send a GET request to http://
 | Update details of a specific customer | PUT | http://localhost:8090/api/customers/:id/
 | Delete a specific customer | DELETE | http://localhost:8090/api/customers/:id/
 <br>
->*All customer ID's are be provided at: http://localhost:8090/api/customers/*
+> *All customer ID's are be provided at: http://localhost:8090/api/customers/*
+
+<br>
 
 To **create** a Customer (send this to the JSON body):
 ```
@@ -285,7 +289,9 @@ To show the **details of a specific Customer**, send a GET request to http://loc
 | Update details of a specific sale | GET | http://localhost:8090/api/sales/:id/
 | Delete a specific sale | GET | http://localhost:8090/api/sales/:id/
 <br>
->*All sales ID's are be provided at: http://localhost:8090/api/sales/*
+> *All sales ID's are be provided at: http://localhost:8090/api/sales/*
+
+<br>
 
 To **create** a Sale (send this to the JSON body):
 ```
