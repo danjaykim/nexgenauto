@@ -64,53 +64,114 @@ all automobile data is pulled from the Inventory microservice
 
 ## Sales microservice
 ****
-##### Models
-**AutomobileVO** - A value object representing all of our automobiles/vehicles. 
-- All automobile data is pulled from the Inventory microservice.
-- vin: The vin of the automobile
-- sold: A boolean value that represents if the vehicle is available or sold
 
-**Salesperson** - An integral part of our organization responsible for selling our vehicles
-- first_name: The first name of the salesperson employee
-- last_name: The last name of the salesperson employee
-- employee_id: The employee ID for the salesperson employee
+There are three key components utilized in this project:
+1. **React (Front-end)** - A powerful Javascript library used to build and render single page applications (SPA). We will be taking advantage of React's component based architecture to render dynamic (on demand) pages such as lists and forms by assembling components and managing states.
+2. **API (Back-end)** -- A Django application with a project named `sales_project` and an application (app) named `sales_rest` that uses the REST Framework. This will be built on our models and API views that handle a multitude of the server-side duties.
+3. **Poller** -- An application that creates or updates an `AutomobileVO` object to the microservice database and retrieves automobile data from the Inventory API every 60 seconds.
+
+The Sales microservice provides a wide range of functionality by managing and organizing the data of four models on the backend (server-side):
+
+**Automobile** - A value object representing all of our automobiles/vehicles. All automobile data is pulled from the Inventory microservice
+- vin -- The vehicle identification number of the automobile
+- sold -- A boolean value that represents if the vehicle is available or sold
+
+**Salesperson** - An integral part of the organization responsible for selling the vehicles
+- first_name -- The first name of the salesperson employee
+- last_name -- The last name of the salesperson employee
+- employee_id -- The employee identification of the salesperson employee
 
 **Customer** - Valued individuals who play an important role in driving revenue through purchasing/servicing
-- first_name: The first name of the customer
-- last_name: The last name of the customer
-- address: The residence of the customer
-- phone_number: The ten-digit contact number of the customer
+- first_name -- The first name of the customer
+- last_name -- The last name of the customer
+- address -- The residence of the customer
+- phone_number -- The ten-digit contact number of the customer
 
 **Sale** - Represents a vehicle sale
-- automobile: A foreign key to the vehicle that was sold
-- salesperson: A foreign key linked to the salesperson who made the sale
-- customer: A foreign key linked to the customer who purchased the vehicle
-- price: The cost in USD that was vehicle was purchased for
+- automobile -- Foreign key to the vehicle that was sold
+- salesperson -- Foreign key to the salesperson who made the sale
+- customer -- Foreign key linked to the customer who purchased the vehicle
+- price -- The cost in USD the vehicle was purchased for
 
-##### API Methods
-**http://localhost:8090/api/salespeople/**
-- GET: Returns a list of all salespeople in the database
-- POST: Creates/adds a new salesperson to the database
 
-**http://localhost:8090/api/salespeople/:id/**
-- GET: Returns the details of a salesperson at the specified ID
-- PUT: Updates details of a salesperson at the specified ID
-- DELETE: Deletes a salesperson at the specified ID
+## Sales Microservice API
+**Port 8090 (Access through an API client of your choice such as Insomnia or Thunderclient)**
 
-**http://localhost:8090/api/customers/**
-- GET: Returns a list of all customers in the database
-- POST: Creates/adds a new customer to the database
+### Customers:
+| Action | Method | URL
+| ----------- | ----------- | ----------- |
+| List all customers | GET | http://localhost:8090/api/customers/
+| Create a customer | POST | http://localhost:8090/api/customers/
+| Details of a specific customer | GET | http://localhost:8090/api/customers/:id/
+| Update details of a specific customer | PUT | http://localhost:8090/api/customers/:id/
+| Delete a specific customer | DELETE | http://localhost:8090/api/customers/:id/
+*All customer ID's are be provided at: http://localhost:8090/api/customers/*
 
-**http://localhost:8090/api/customers/:id/**
-- GET: Returns the details of a customer at the specified ID
-- PUT: Updates details of a customer at the specified ID
-- DELETE: Deletes a customer at the specified ID
+To **create** a Customer (send this to the JSON body):
+```
+{
+	"first_name": "Bailey",
+	"last_name": "Dakota",
+	"address": "3505 Cherry Lane, Los Angeles, CA 90020",
+	"phone_number": "323-123-1234"
+}
+```
+Return value of creating a Customer:
+```
+{
+    "id": 1,
+    "first_name": "Bailey",
+    "last_name": "Dakota",
+    "address": "3505 Cherry Lane, Los Angeles, CA 90020",
+    "phone_number": "323-123-1234"
+}
+```
+Return value of **listing all Customers**:
+```
+{
+	"customers": [
+		{
+			"first_name": "Bailey",
+			"last_name": "Dakota",
+			"address": "3505 Cherry Lane, Los Angeles, CA 90020",
+			"phone_number": "323-123-1234",
+			"id": 1
+		},
+		{
+			"first_name": "Devin",
+			"last_name": "Gates",
+			"address": "623 Cottage Ave, Albany, NY 12203",
+			"phone_number": "932-654-8342",
+			"id": 2
+		}
+	]
+}
+```
+To **update** the detail(s) of a specific Customer (make any adjustments within the boundaries of the model field type):
+*Note: Replace `:id` with the specified customer ID you would like to update.*
+```
+{
+    "address": "5311 Fairview Avenue, Anaheim, CA 92805"
+}
+```
+Return value of updating the detail(s) of a specific Customer:
+```
+{
+    "id": 1,
+    "first_name": "Bailey",
+    "last_name": "Dakota",
+    "address": "5311 Fairview Avenue, Anaheim, CA 92805",
+    "phone_number": "323-123-1234"
+}
+```
 
-**http://localhost:8090/api/sales/**
-- GET: Returns a list of all sales in the database
-- POST: Creates/adds a new sale to the database
+To **delete** a Customer, send a DELETE request to http://localhost:8090/api/customers/:id/
+*Note: Replace `:id` with the specified customer ID you would like deleted.*
+*All customer ID's can be provided at: http://localhost:8090/api/customers/*
 
-**http://localhost:8090/api/sales/:id/**
-- GET: Returns the details of a sale at the specified ID
-- PUT: Updates details of a sale at the specified ID
-- DELETE: Deletes a sale at the specified ID
+Return value of deleting a specific Customer:
+```
+{
+    "deleted": true
+}
+```
