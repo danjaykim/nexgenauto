@@ -76,25 +76,25 @@ There are three key components utilized in this project:
 The Sales microservice provides a wide range of functionality by managing and organizing the data of four models on the back-end (server-side):
 
 **Automobile** - A value object representing all of our automobiles/vehicles. All automobile data is pulled from the Inventory microservice
-- vin -- The vehicle identification number of the automobile
-- sold -- A boolean value that represents if the vehicle is available or sold
+- vin: The vehicle identification number of the automobile
+- sold: A boolean value that represents if the vehicle is available or sold
 
 **Salesperson** - An integral part of the organization responsible for selling the vehicles
-- first_name -- The first name of the salesperson employee
-- last_name -- The last name of the salesperson employee
-- employee_id -- The employee identification of the salesperson employee
+- first_name: The first name of the salesperson employee
+- last_name: The last name of the salesperson employee
+- employee_id: The employee identification of the salesperson employee
 
 **Customer** - Valued individuals who play an important role in driving revenue through purchasing/servicing
-- first_name -- The first name of the customer
-- last_name -- The last name of the customer
-- address -- The residence of the customer
-- phone_number -- The ten-digit contact number of the customer
+- first_name: The first name of the customer
+- last_name: The last name of the customer
+- address: The residence of the customer
+- phone_number: The ten-digit contact number of the customer
 
 **Sale** - Represents a vehicle sale
-- automobile -- Foreign key to the vehicle that was sold
-- salesperson -- Foreign key to the salesperson who made the sale
-- customer -- Foreign key linked to the customer who purchased the vehicle
-- price -- The cost in USD the vehicle was purchased for
+- automobile: Foreign key to the vehicle that was sold
+- salesperson: Foreign key to the salesperson who made the sale
+- customer: Foreign key linked to the customer who purchased the vehicle
+- price: The cost in USD the vehicle was purchased for
 
 <br>
 
@@ -106,9 +106,9 @@ The Sales microservice provides a wide range of functionality by managing and or
 | ----------- | ----------- | ----------- |
 | List all salespeople | GET | http://localhost:8090/api/salespeople/
 | Create a salesperson | POST | http://localhost:8090/api/salespeople/
-| Details of a specific salesperson | GET | http://localhost:8090/api/salesperson/:id/
-| Update details of a specific salesperson | PUT | http://localhost:8090/api/salesperson/:id/
-| Delete a specific salesperson | DELETE | http://localhost:8090/api/salesperson/:id/
+| Details of a specific salesperson | GET | http://localhost:8090/api/salespeople/:id/
+| Update details of a specific salesperson | PUT | http://localhost:8090/api/salespeople/:id/
+| Delete a specific salesperson | DELETE | http://localhost:8090/api/salespeople/:id/
 <br>
 
 _All salespeople ID's are be provided at: http://localhost:8090/api/salespeople/_
@@ -130,7 +130,7 @@ Return value of creating a Salesperson:
   "id": 1,
   "first_name": "Mookie",
   "last_name": "Betts",
-  "employee_number": "mbetts"
+  "employee_id": "mbetts"
 }
 ```
 Return value of **listing all Salespeople**:
@@ -290,8 +290,8 @@ To show the **details of a specific Customer**, send a GET request to http://loc
 | List all sales | GET | http://localhost:8090/api/sales/
 | Create a new sale | POST | http://localhost:8090/api/sales/
 | Details of a specific sale | GET | http://localhost:8090/api/sales/:id/
-| Update details of a specific sale | GET | http://localhost:8090/api/sales/:id/
-| Delete a specific sale | GET | http://localhost:8090/api/sales/:id/
+| Update details of a specific sale | PUT | http://localhost:8090/api/sales/:id/
+| Delete a specific sale | DELETE | http://localhost:8090/api/sales/:id/
 <br>
 
 _All sales ID's are be provided at: http://localhost:8090/api/sales/_
@@ -309,7 +309,7 @@ To **create** a Sale (send this to the JSON body):
 }
 ```
 *Note the following:*
-- *automobile: In the JSON body, the automobile field takes in a seventeen digit VIN number wrapped in a string. This value must be an already existing Automobile VIN in the Inventory database. Refer to: http://localhost:8100/api/automobiles/ for a list of all automobiles in the database.*
+- *automobile: In the JSON body, the automobile field takes in a seventeen digit/character VIN number wrapped in a string. This value must be an already existing Automobile VIN in the Inventory database. Refer to: http://localhost:8100/api/automobiles/ for a list of all automobiles in the database.*
 - *salesperson: This field only accepts an existing salesperson's ID (Refer to: http://localhost:8090/api/salespeople/ for a list of all salespeople and their IDs)*
 - *customer: This field only accepts an existing customer's ID (Refer to: http://localhost:8090/api/customers/ for a list of all customers and their IDs)*
 - *price: This field accepts a number value wrapped in a string*
