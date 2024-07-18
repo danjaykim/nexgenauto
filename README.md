@@ -97,6 +97,86 @@ The Sales microservice provides a wide range of functionality by managing and or
 ## Sales Microservice API
 **Port 8090 (Access through an API client of your choice such as Insomnia or Thunderclient)**
 
+### Salespeople:
+| Action | Method | URL
+| ----------- | ----------- | ----------- |
+| List all salespeople | GET | http://localhost:8090/api/salespeople/
+| Create a salesperson | POST | http://localhost:8090/api/salespeople/
+| Details of a specific salesperson | GET | http://localhost:8090/api/salesperson/:id/
+| Update details of a specific salesperson | PUT | http://localhost:8090/api/salesperson/:id/
+| Delete a specific salesperson | DELETE | http://localhost:8090/api/salesperson/:id/
+*All salespeople ID's are be provided at: http://localhost:8090/api/salespeople/*
+
+
+To **create** a Salesperson (send this to the JSON body):
+```
+{
+	"first_name": "Mookie",
+	"last_name": "Betts",
+	"employee_id": "mbetts" 
+}
+```
+Return value of creating a Salesperson:
+```
+{
+	"id": 1,
+	"first_name": "Mookie",
+	"last_name": "Betts",
+	"employee_number": "mbetts"
+}
+```
+Return value of **listing all Salespeople**:
+```
+{
+	"salespeople": [
+		{
+		    "id": 1,
+			"first_name": "Mookie",
+			"last_name": "Betts",
+            "employee_id": "mbetts"
+		},
+		{
+		    "id": 2,
+			"first_name": "Karissa",
+			"last_name": "Pierre",
+			"employee_id": "kpierre"
+		}
+	]
+}
+```
+To **update** the detail(s) of a specific Salesperson (make any adjustments within the boundaries of the model field type):
+```
+{
+    "last_name": "Johnson",
+    "employee_id": "kjohnson"
+}
+```
+Return value of updating the detail(s) of a specific Salesperson:
+```
+{
+    "id": 2,
+    "first_name": "Karissa",
+    "last_name": "Johnson",
+    "employee_id": "kjohnson"
+}
+```
+
+To **delete** a Salesperson, send a DELETE request to http://localhost:8090/api/salespeople/:id/
+*Note: Replace `:id` with the specified salesperson ID you would like deleted.*
+*All salesperson ID's can be provided at: http://localhost:8090/api/salespeople/*
+
+Return value of deleting a specific Salesperson:
+```
+{
+    "deleted": true
+}
+```
+
+To show the **details of a specific Salesperson**, send a GET request to http://localhost:8090/api/salespeople/:id/
+*Note: Replace `:id` with the specified salesperson ID you would like view.*
+*All salespeople ID's can be provided at: http://localhost:8090/api/salespeople/*
+
+
 ### Customers:
 | Action | Method | URL
 | ----------- | ----------- | ----------- |
@@ -131,24 +211,24 @@ Return value of **listing all Customers**:
 {
 	"customers": [
 		{
+		    "id": 1,
 			"first_name": "Bailey",
 			"last_name": "Dakota",
 			"address": "3505 Cherry Lane, Los Angeles, CA 90020",
-			"phone_number": "323-123-1234",
-			"id": 1
+			"phone_number": "323-123-1234"
 		},
 		{
+		    "id": 2,
 			"first_name": "Devin",
 			"last_name": "Gates",
 			"address": "623 Cottage Ave, Albany, NY 12203",
-			"phone_number": "932-654-8342",
-			"id": 2
+			"phone_number": "932-654-8342"
 		}
 	]
 }
 ```
 To **update** the detail(s) of a specific Customer (make any adjustments within the boundaries of the model field type):
-*Note: Replace `:id` with the specified customer ID you would like to update.*
+
 ```
 {
     "address": "5311 Fairview Avenue, Anaheim, CA 92805"
@@ -175,3 +255,106 @@ Return value of deleting a specific Customer:
     "deleted": true
 }
 ```
+To show the **details of a specific Customer**, send a GET request to http://localhost:8090/api/customers/:id/
+*Note: Replace `:id` with the specified customer ID you would like view.*
+*All customer ID's can be provided at: http://localhost:8090/api/customers/*
+
+
+### Sales records:
+
+| Action | Method | URL
+| ----------- | ----------- | ----------- |
+| List all sales | GET | http://localhost:8090/api/sales/
+| Create a new sale | POST | http://localhost:8090/api/sales/
+| Details of a specific sale | GET | http://localhost:8090/api/sales/:id/
+| Update details of a specific sale | GET | http://localhost:8090/api/sales/:id/
+| Delete a specific sale | GET | http://localhost:8090/api/sales/:id/
+*All sales ID's are be provided at: http://localhost:8090/api/sales/*
+
+To **create** a Sale (send this to the JSON body):
+```
+{
+  "automobile": "4T1BE32K66U134020",
+  "salesperson": 1,
+  "customer": 2,
+  "price": "94000"
+}
+```
+*Note the following:*
+- *automobile: In the JSON body, the automobile field takes in a seventeen digit VIN number wrapped in a string. This value must be an already existing Automobile VIN in the Inventory database. Refer to: http://localhost:8100/api/automobiles/ for a list of all automobiles in the database.*
+- *salesperson: This field only accepts an existing salesperson's ID (Refer to: http://localhost:8090/api/salespeople/ for a list of all salespeople and their IDs)*
+- *customer: This field only accepts an existing customer's ID (Refer to: http://localhost:8090/api/customers/ for a list of all customers and their IDs)*
+- *price: This field accepts a number value wrapped in a string*
+
+
+Return value of **listings all Sales**:
+```
+{
+	"sales": [
+		{
+			"id": 1,
+			"price": "94000",
+			"automobile": {
+				"vin": "4T1BE32K66U134020",
+				"sold": true
+			},
+			"salesperson": {
+				"id": 1,
+				"first_name": "Mookie",
+				"last_name": "Betts",
+				"employee_id": "mbetts"
+			},
+			"customer": {
+			    "id": 2,
+				"first_name": "Devin",
+				"last_name": "Gates",
+				"address": "623 Cottage Ave, Albany, NY 12203",
+				"phone_number": "932-654-8342"
+			}
+		}
+	]
+}
+```
+
+To **update** the detail(s) of a specific Sale (make any adjustments within the boundaries of the model's field types):
+```
+{
+  "price": "97000"
+}
+```
+Return value of updating the detail(s) of a specific Sale:
+```
+{
+	"sales": [
+		{
+			"id": 1,
+			"price": "97000",
+			"automobile": {
+				"vin": "4T1BE32K66U134020",
+				"sold": true
+			},
+			"salesperson": {
+				"id": 1,
+				"first_name": "Mookie",
+				"last_name": "Betts",
+				"employee_id": "mbetts"
+			},
+			"customer": {
+			    "id": 2,
+				"first_name": "Devin",
+				"last_name": "Gates",
+				"address": "623 Cottage Ave, Albany, NY 12203",
+				"phone_number": "932-654-8342"
+			}
+		}
+	]
+}
+```
+
+To show the **details of a specific sale**, send a GET request to http://localhost:8090/api/sales/:id/
+*Note: Replace `:id` with the specified sale ID you would like to view.*
+*All sales ID's can be provided at: http://localhost:8090/api/sales/*
+
+To **delete** a Sale, send a DELETE request to http://localhost:8090/api/sales/:id/
+*Note: Replace `:id` with the specified sale ID you would like deleted.*
+*All sales ID's can be provided at: http://localhost:8090/api/sales/*
