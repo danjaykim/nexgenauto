@@ -385,8 +385,10 @@ all automobile data is pulled from the Inventory microservice
 **http://localhost:8080/api/appointments/:id/finish/**
 - PUT: sets the appointment at the specified database ID to finished
 
-## Sales Microservice
+<br>
 
+## Sales Microservice
+****
 <br>
 
 There are three key components utilized in this project:
