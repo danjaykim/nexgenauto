@@ -2,12 +2,11 @@
 ****
 ## Team
 
-##### Max Vuong - Service
-##### Daniel Kim - Sales
+- Max Vuong: Services Microservice
+- Daniel Kim: Sales Microservice
 
 ## How to setup the project
-****
-1. Fork the repository
+1. Fork this repository
 2. Clone the forked repository in your terminal: `git clone <repository url here>`
 3. Run the following commands in your terminal:
 ```
@@ -17,6 +16,9 @@ docker compose up
 ```
 4. Run the command to check that all containers are up and running: `docker compose ps`
 5. When all steps are done properly, your front-end page powered by React will be accessible at http://localhost:5173/
+6. You may now populate data with the following options:
+- Filling and submitting the forms in our React application at http://localhost:5173
+- Sending JSON data to the API endpoints (detailed instructions below)
 
 ## Design Diagram
 ****
@@ -26,7 +28,7 @@ docker compose up
 
 <br>
 
-The Inventory microservice will consist of all the necessary information about our vehicles (Manufacturer, VehicleModel, and Automobile):
+The Inventory microservice will consist of all the necessary data about our vehicles (Manufacturer, VehicleModel, and Automobile):
 
 **Manufacturer** - Company producing a particular automobile
 - name: The name of the company
@@ -113,7 +115,9 @@ To **delete** a Manufacturer, send a DELETE request to http://localhost:8100/api
 *Note: Replace `:id` with the specified manufacturer ID you would like deleted.*
 <br>
 *All manufacturer ID's can be provided at: http://localhost:8100/api/manufacturers/*
+
 <br>
+
 To show the **details of a specific Manufacturer**, send a GET request to http://localhost:8100/api/manufacturers/:id/
 <br>
 *Note: Replace `:id` with the specified manufacturer ID you would like view.*
@@ -183,7 +187,9 @@ To **update** the detail(s) of a specific Vehicle Model (make any adjustments wi
 }
 ```
 *Note: It is **not** possible to update a vehicle model's manufacturer*
+
 <br>
+
 Return value of updating the detail(s) of a specific Vehicle Model:
 ```
 {
@@ -204,7 +210,10 @@ To **delete** a Vehicle Model, send a DELETE request to http://localhost:8100/ap
 *Note: Replace `:id` with the specified vehicle model ID you would like deleted.*
 <br>
 *All vehicle model ID's can be provided at: http://localhost:8100/api/models/*
+
 <br>
+<br>
+
 To show the **details of a specific Vehicle Model**, send a GET request to http://localhost:8100/api/models/:id/
 <br>
 *Note: Replace `:id` with the specified vehicle model ID you would like view.*
@@ -319,7 +328,10 @@ To **delete** an Automobile, send a DELETE request to http://localhost:8100/api/
 *Note: Replace `:vin` with the specified automobile's VIN you would like deleted.*
 <br>
 *All automobile VIN's can be provided at: http://localhost:8100/api/automobiles/*
+
 <br>
+<br>
+
 To show the **details of a specific Automobile**, send a GET request to http://localhost:8100/api/automobiles/:vin/
 <br>
 *Note: Replace `:vin` with the specified automobile VIN you would like view.*
