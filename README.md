@@ -297,7 +297,7 @@ To **update** the detail(s) of a specific Automobile (make any adjustments withi
 {
   "color": "Silver"
   "year": 2022,
-  "sold": "true"
+  "sold": true
 }
 ```
 Return value of updating the detail(s) of a specific Automobile:
