@@ -18,7 +18,6 @@ export default function SalesHistory() {
         const response = await fetch(salespeopleUrl);
         if (response.ok) {
             const data = await response.json();
-            // console.log(data);
             setSalespeople(data.salespeople);
         }
 
@@ -26,7 +25,6 @@ export default function SalesHistory() {
         const salesResponse = await fetch(salesUrl);
         if (salesResponse.ok) {
             const data = await salesResponse.json();
-            // console.log(data);
             setSales(data.sales);
         }
     }
@@ -34,10 +32,6 @@ export default function SalesHistory() {
     useEffect(() => {
         fetchData();
     }, [])
-
-    // console.log(salespeople);
-    console.log(sales);
-    console.log(selectedSalesperson);
 
     // ====================================
 
@@ -52,7 +46,6 @@ export default function SalesHistory() {
     // Prepare filter for mapping of sale:
 
     const filteredSale = sales.filter(sale => sale.salesperson.id === Number(selectedSalesperson));
-    console.log(filteredSale);
 
     // ====================================
 
