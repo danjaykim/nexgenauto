@@ -7,15 +7,326 @@
 
 ## How to setup the project
 ****
-1. fork/clone the repo
-2. run the command `docker volume create beta-data`
-3. run the command `docker-compose build`
-4. run the command `docker-compose up`
-5. your front end page will be accessible at http://localhost:5173/
+1. Fork the repository
+2. Clone the forked repository in your terminal: `git clone <repository url here>`
+3. Run the following commands in your terminal:
+```
+docker volume create beta-data
+docker compose build
+docker compose up
+```
+4. Run the command to check that all containers are up and running: `docker compose ps`
+5. When all steps are done properly, your front-end page powered by React will be accessible at http://localhost:5173/
 
 ## Design Diagram
 ****
 ![The DDD diagram image should be here](./Project-BETA-DDD.PNG)
+
+## Inventory Microservice
+
+<br>
+
+The Inventory microservice will consist of all the necessary information about our vehicles (Manufacturer, VehicleModel, and Automobile):
+
+**Manufacturer** - Company producing a particular automobile
+- name: The name of the company
+
+**VehicleModel** - The automobile's specific name
+- name: The name of the vehicle
+- picture_url: An image of the vehicle
+
+**Automobile** - The details of a specific automobile
+- color: The color of the vehicle
+- year: The year of the vehicle
+- vin: A seventeen-character unique identifier for the vehicle
+- sold: A boolean value that represents if the vehicle is available or sold
+- model: Foreign key to the VehicleModel
+
+<br>
+
+## Inventory Microservice API
+**Port 8100 (Access through an API client of your choice such as Insomnia or Thunderclient)**
+
+### Manufacturer:
+| Action | Method | URL
+| ----------- | ----------- | ----------- |
+| List all manufacturers | GET | http://localhost:8100/api/manufacturers/
+| Create a manufacturer | POST | http://localhost:8100/api/manufacturers/
+| Details of a specific manufacturer | GET | http://localhost:8100/api/manufacturers/:id/
+| Update details of a specific manufacturer | PUT | http://localhost:8100/api/manufacturers/:id/
+| Delete a specific manufacturer | DELETE | http://localhost:8100/api/manufacturers/:id/
+<br>
+
+_All manufacturer ID's are be provided at: http://localhost:8100/api/manufacturers/_
+
+<br>
+<br>
+
+To **create** a Manufacturer (send this to the JSON body):
+```
+{
+  "name": "Porsche" 
+}
+```
+Return value of creating a Manufacturer:
+```
+{
+  "href": "/api/manufacturers/1/",
+  "id": 1,
+  "name": "Porsche" 
+}
+```
+Return value of **listing all Manufacturers**:
+```
+{
+  "manufacturers": [
+    {
+      "href": "/api/manufacturers/1/",
+      "id": 1,
+      "name": "Porsche"
+    },
+    {
+      "href": "/api/manufacturers/2/",
+      "id": 2,
+      "name": "Toyota"
+    }
+  ]
+}
+```
+To **update** the detail(s) of a specific Manufacturer (make any adjustments within the boundaries of the model field type):
+```
+{
+  "name": "Lexus"
+}
+```
+Return value of updating the detail(s) of a specific Manufacturer:
+```
+{
+  "href": "/api/manufacturers/2/",
+  "id": 2,
+  "name": "Lexus" 
+}
+```
+
+To **delete** a Manufacturer, send a DELETE request to http://localhost:8100/api/manufacturers/:id/
+<br>
+*Note: Replace `:id` with the specified manufacturer ID you would like deleted.*
+<br>
+*All manufacturer ID's can be provided at: http://localhost:8100/api/manufacturers/*
+<br>
+To show the **details of a specific Manufacturer**, send a GET request to http://localhost:8100/api/manufacturers/:id/
+<br>
+*Note: Replace `:id` with the specified manufacturer ID you would like view.*
+<br>
+*All manufacturer ID's can be provided at: http://localhost:8100/api/manufacturers/*
+
+<br>
+
+### Vehicle Model:
+| Action | Method | URL
+| ----------- | ----------- | ----------- |
+| List all vehicle models | GET | http://localhost:8100/api/models/
+| Create a vehicle model | POST | http://localhost:8100/api/models/
+| Details of a specific vehicle model | GET | http://localhost:8100/api/models/:id/
+| Update details of a specific vehicle model | PUT | http://localhost:8100/api/models/:id/
+| Delete a specific vehicle model | DELETE | http://localhost:8100/api/models/:id/
+<br>
+
+_All vehicle model ID's are be provided at: http://localhost:8100/api/models/_
+
+<br>
+<br>
+
+To **create** a Vehicle Model (send this to the JSON body):
+```
+{
+  "name": "Macan",
+  "picture_url": "https://www.exampledomainname.com/pathpage.jpg",
+  "manufacturer_id": 1
+}
+```
+Return value of **listing all Vehicle Models**:
+```
+{
+  "models": [
+    {
+      "href": "/api/models/1/",
+      "id": 1,
+      "name": "Macan",
+      "picture_url": "https://www.exampledomainname.com/pathpage.jpg",
+      "manufacturer": {
+        "href": "/api/manufacturers/1/",
+        "id": 1,
+        "name": "Porsche"
+      }
+    },
+    {
+      "href": "/api/models/2/",
+      "id": 2,
+      "name": "RX 500h F Sport Performance",
+      "picture_url": "https://www.exampledomainname.com/pathpage.jpg",
+      "manufacturer": {
+        "href": "/api/manufacturers/2/",
+        "id": 2,
+        "name": "Lexus"
+      }
+    }
+  ]
+}
+```
+To **update** the detail(s) of a specific Vehicle Model (make any adjustments within the boundaries of the model field type):
+
+```
+{
+  "name": "IS 500 F Sport Performance"
+  "picture_url": "https://adifferentexampledomainname.com/pathpage.jpg"
+}
+```
+*Note: It is **not** possible to update a vehicle model's manufacturer*
+<br>
+Return value of updating the detail(s) of a specific Vehicle Model:
+```
+{
+  "href": "/api/models/2/",
+  "id": 2,
+  "name": "IS 500 F Sport Performance",
+  "picture_url": "https://www.adifferentexampledomainname.com/pathpage.jpg",
+  "manufacturer": {
+    "href": "/api/manufacturers/2/",
+    "id": 2,
+    "name": "Lexus"
+  }
+}
+```
+
+To **delete** a Vehicle Model, send a DELETE request to http://localhost:8100/api/models/:id/
+<br>
+*Note: Replace `:id` with the specified vehicle model ID you would like deleted.*
+<br>
+*All vehicle model ID's can be provided at: http://localhost:8100/api/models/*
+<br>
+To show the **details of a specific Vehicle Model**, send a GET request to http://localhost:8100/api/models/:id/
+<br>
+*Note: Replace `:id` with the specified vehicle model ID you would like view.*
+<br>
+*All vehicle model ID's can be provided at: http://localhost:8100/api/models/*
+
+<br>
+
+### Automobile:
+| Action | Method | URL
+| ----------- | ----------- | ----------- |
+| List all automobiles | GET | http://localhost:8100/api/automobiles/
+| Create an automobile | POST | http://localhost:8100/api/automobiles/
+| Details of a specific automobile | GET | http://localhost:8100/api/automobiles/:vin/
+| Update details of a specific automobile | PUT | http://localhost:8100/api/automobiles/:vin/
+| Delete a specific automobile | DELETE | http://localhost:8100/api/automobiles/:vin/
+<br>
+
+_All automobile VIN's are be provided at: http://localhost:8100/api/automobiles/_
+
+<br>
+<br>
+
+To **create** an automobile (send this to the JSON body):
+```
+{
+  "color": "Black",
+  "year": 2024,
+  "vin": "1GNDT13S622471922",
+  "model_id": 1
+}
+```
+Return value of **listing all automobile/vehicles**:
+```
+{
+  "autos": [
+    {
+      "href": "/api/automobiles/1GNDT13S622471922/",
+      "id": 1,
+      "color": "Black",
+      "year": 2024,
+      "vin": "1GNDT13S622471922",
+      "model": {
+        "href": "/api/models/1/",
+        "id": 1,
+        "name": "Macan",
+        "picture_url": "https://www.exampledomainname.com/pathpage.jpg",
+        "manufacturer": {
+          "href": "/api/manufacturers/1/",
+          "id": 1,
+          "name": "Porsche"
+        }
+      },
+      "sold": false
+    },
+    {
+      "href": "/api/automobiles/19UYA42671A034703/",
+      "id": 2,
+      "color": "White",
+      "year": 2024,
+      "vin": "19UYA42671A034703",
+      "model": {
+        "href": "/api/models/2/",
+        "id": 2,
+        "name": "IS 500 F Sport Performance",
+        "picture_url": "https://www.adifferentexampledomainname.com/pathpage.jpg",
+        "manufacturer": {
+          "href": "/api/manufacturers/2/",
+          "id": 2,
+          "name": "Lexus"
+        }
+      },
+      "sold": false
+    }
+  ]
+}
+```
+To **update** the detail(s) of a specific Automobile (make any adjustments within the boundaries of the model field type):
+
+```
+{
+  "color": "Silver"
+  "year": 2022,
+  "sold": "true"
+}
+```
+Return value of updating the detail(s) of a specific Automobile:
+```
+{
+  "href": "/api/automobiles/1GNDT13S622471922/",
+  "id": 1,
+  "color": "Silver",
+  "year": 2022,
+  "vin": "1GNDT13S622471922",
+  "model": {
+    "href": "/api/models/1/",
+    "id": 1,
+    "name": "Macan",
+    "picture_url": "https://www.exampledomainname.com/pathpage.jpg",
+    "manufacturer": {
+      "href": "/api/manufacturers/1/",
+      "id": 1,
+      "name": "Porsche"
+    }
+  },
+  "sold": true
+}
+```
+
+To **delete** an Automobile, send a DELETE request to http://localhost:8100/api/automobiles/:vin/
+<br>
+*Note: Replace `:vin` with the specified automobile's VIN you would like deleted.*
+<br>
+*All automobile VIN's can be provided at: http://localhost:8100/api/automobiles/*
+<br>
+To show the **details of a specific Automobile**, send a GET request to http://localhost:8100/api/automobiles/:vin/
+<br>
+*Note: Replace `:vin` with the specified automobile VIN you would like view.*
+<br>
+*All automobile VIN's can be provided at: http://localhost:8100/api/automobiles/*
+
+<br>
 
 ## Service microservice
 ****
@@ -62,7 +373,7 @@ all automobile data is pulled from the Inventory microservice
 **http://localhost:8080/api/appointments/:id/finish/**
 - PUT: sets the appointment at the specified database ID to finished
 
-## Sales microservice
+## Sales Microservice
 
 <br>
 
@@ -76,7 +387,7 @@ There are three key components utilized in this project:
 The Sales microservice provides a wide range of functionality by managing and organizing the data of four models on the back-end (server-side):
 
 **Automobile** - A value object representing all of our automobiles/vehicles. All automobile data is pulled from the Inventory microservice
-- vin: The vehicle identification number of the automobile
+- vin: A seventeen-character unique identifier for the vehicle
 - sold: A boolean value that represents if the vehicle is available or sold
 
 **Salesperson** - An integral part of the organization responsible for selling the vehicles
@@ -283,7 +594,7 @@ To show the **details of a specific Customer**, send a GET request to http://loc
 
 <br>
 
-### Sales records:
+### Sales Records:
 
 | Action | Method | URL
 | ----------- | ----------- | ----------- |
@@ -309,7 +620,7 @@ To **create** a Sale (send this to the JSON body):
 }
 ```
 *Note the following:*
-- *automobile: In the JSON body, the automobile field takes in a seventeen digit/character VIN number wrapped in a string. This value must be an already existing Automobile VIN in the Inventory database. Refer to: http://localhost:8100/api/automobiles/ for a list of all automobiles in the database.*
+- *automobile: In the JSON body, the automobile field takes in a seventeen character VIN wrapped in a string. This value must be an already existing Automobile VIN in the Inventory database. Refer to: http://localhost:8100/api/automobiles/ for a list of all automobiles in the database.*
 - *salesperson: This field only accepts an existing salesperson's ID (Refer to: http://localhost:8090/api/salespeople/ for a list of all salespeople and their IDs)*
 - *customer: This field only accepts an existing customer's ID (Refer to: http://localhost:8090/api/customers/ for a list of all customers and their IDs)*
 - *price: This field accepts a number value wrapped in a string*
@@ -323,7 +634,7 @@ Return value of **listings all Sales**:
       "id": 1,
       "price": "94000",
       "automobile": {
-        "vin": "4T1BE32K66U134020",
+        "vin": "1GNDT13S622471922",
         "sold": true
       },
       "salesperson": {
@@ -356,7 +667,7 @@ Return value of updating the detail(s) of a specific Sale:
   "id": 1,
   "price": "97000",
   "automobile": {
-    "vin": "4T1BE32K66U134020",
+    "vin": "1GNDT13S622471922",
     "sold": true
   },
   "salesperson": {
@@ -374,17 +685,16 @@ Return value of updating the detail(s) of a specific Sale:
   }
 }
 ```
-
-To show the **details of a specific sale**, send a GET request to http://localhost:8090/api/sales/:id/
+To **delete** a Sale, send a DELETE request to http://localhost:8090/api/sales/:id/
 <br>
-*Note: Replace `:id` with the specified sale ID you would like to view.*
+*Note: Replace `:id` with the specified sale ID you would like deleted.*
 <br>
 *All sales ID's can be provided at: http://localhost:8090/api/sales/*
 
 <br>
 
-To **delete** a Sale, send a DELETE request to http://localhost:8090/api/sales/:id/
+To show the **details of a specific sale**, send a GET request to http://localhost:8090/api/sales/:id/
 <br>
-*Note: Replace `:id` with the specified sale ID you would like deleted.*
+*Note: Replace `:id` with the specified sale ID you would like to view.*
 <br>
 *All sales ID's can be provided at: http://localhost:8090/api/sales/*

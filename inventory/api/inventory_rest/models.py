@@ -40,6 +40,7 @@ class Automobile(models.Model):
         related_name="automobiles",
         on_delete=models.CASCADE,
     )
+
     def __str__(self):
         return f"{str(self.year)} {self.model.name}"
 
