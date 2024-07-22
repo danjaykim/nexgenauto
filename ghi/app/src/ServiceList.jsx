@@ -59,42 +59,41 @@ function ServiceList(){
             <div>
                 <h1 className="display-5 fw-bold">Service Appointments</h1>
                 <table className="table table-striped">
-                <thead>
-                    <tr>
-                    <th>VIN</th>
-                    <th>Is VIP?</th>
-                    <th>Customer</th>
-                    <th>Date</th>
-                    <th>Time(24HR)</th>
-                    <th>Technician</th>
-                    <th>Reason</th>
-                    <th>cancel</th>
-                    <th>finish</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {apps.map(app => {
-                        if (app.status === "in progress"){
-                            let vip = "No"
-                            if (autos.includes(app.vin)){
-                                vip = "Yes"
-                            }
-                            if (app.vin )
-                        return (
-                            <tr key={app.id}>
-                            <td>{ app.vin }</td>
-                            <td>{ vip }</td>
-                            <td>{ app.customer }</td>
-                            <td>{ app.date }</td>
-                            <td>{ app.time }</td>
-                            <td>{ app.technician.first_name } { app.technician.last_name}</td>
-                            <td>{ app.reason }</td>
-                            <td><button className="btn btn-danger" onClick={() => handleCancel(app.id)}>Cancel</button></td>
-                            <td><button className="btn btn-success"onClick={() => handleFinish(app.id)}>Finish</button></td>
-                            </tr>
-                        )}
-                    })}
-                </tbody>
+                    <thead>
+                        <tr>
+                        <th>VIN</th>
+                        <th>Is VIP?</th>
+                        <th>Customer</th>
+                        <th>Date</th>
+                        <th>Time(24HR)</th>
+                        <th>Technician</th>
+                        <th>Reason</th>
+                        <th>cancel</th>
+                        <th>finish</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {apps.map(app => {
+                            if (app.status === "in progress"){
+                                let vip = "No"
+                                if (autos.includes(app.vin)){
+                                    vip = "Yes"
+                                }
+                            return (
+                                <tr key={app.id}>
+                                <td>{ app.vin }</td>
+                                <td>{ vip }</td>
+                                <td>{ app.customer }</td>
+                                <td>{ app.date }</td>
+                                <td>{ app.time }</td>
+                                <td>{ app.technician.first_name } { app.technician.last_name}</td>
+                                <td>{ app.reason }</td>
+                                <td><button className="btn btn-danger" onClick={() => handleCancel(app.id)}>Cancel</button></td>
+                                <td><button className="btn btn-success"onClick={() => handleFinish(app.id)}>Finish</button></td>
+                                </tr>
+                            )}
+                        })}
+                    </tbody>
                 </table>
             </div>
         </>
