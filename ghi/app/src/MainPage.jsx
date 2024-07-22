@@ -1,15 +1,13 @@
-function MainPage() {
+import { Link } from "react-router-dom";
+
+export default function MainPage() {
   return (
-    <div className="px-4 py-5 my-5 text-center">
-      <h1 className="display-5 fw-bold">CarCar</h1>
-      <div className="col-lg-6 mx-auto">
-        <p className="lead mb-4">
-          The premiere solution for automobile dealership
-          management!
-        </p>
+    <div className="hero-container p-5 my-4">
+      <div className="hero-text">
+        <h1 className="hero-title display-5 fw-bold border-bottom opacity-75">CarCar</h1>
+        <p className="lead col-md-8 fs-4 opacity-75 pt-2">The premiere solution for automobile dealership management</p>
       </div>
+      <Link className="hero-btn" to="/models">button</Link>
     </div>
   );
 }
-
-export default MainPage;

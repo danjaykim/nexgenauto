@@ -23,10 +23,17 @@ import ServiceHistory from "./ServiceHistory"
 function App() {
 	return (
 		<BrowserRouter>
-			<Nav />
-			<div className="container">
+			{/* <main className="main-container"> */}
+			<div className="main-containers">
+				<Nav />
+			</div>
+			<div>
 				<Routes>
 					<Route path="/" element={<MainPage />} />
+				</Routes>
+			</div>
+			<div className="main-containers">
+				<Routes>
 					<Route path="/manufacturers" element={<ManufacturerList />} />
 					<Route path="/manufacturers/create" element={<ManufacturerForm />} />
 					<Route path="/models" element={<ModelList />} />
@@ -47,6 +54,7 @@ function App() {
 					<Route path="/appointments/history" element={<ServiceHistory />} />
 				</Routes>
 			</div>
+			{/* </main> */}
 		</BrowserRouter>
 	);
 }
