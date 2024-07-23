@@ -166,6 +166,17 @@ export default function MainPage() {
         </button>
       </div >
 
+      {/* Fourth Section - Mission */}
+      <div className="main-containers fourth-section">
+        <div className="mission-container">
+          <img src="images/car-white-background.avif" className="mission-car" alt="White super car" />
+          <h4>Our Mission</h4>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae adipisci harum corporis fugiat,
+            non iusto suscipit doloremque similique reprehenderit libero sed quidem facere blanditiis architecto
+            aperiam debitis vero perferendis quae!</p>
+        </div>
+      </div>
+
     </>
   );
 }

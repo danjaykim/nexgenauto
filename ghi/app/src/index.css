@@ -14,7 +14,7 @@ code {
 
 .main-containers {
 	width: 90%;
-	max-width: 1600px;
+	max-width: 1400px;
 	margin: auto;
 	padding: 1rem 0;
 }
@@ -49,7 +49,7 @@ code {
 .hero-btn:hover {
 	background: white;
 	transition: .5s ease-out;
-	color: darkgray;
+	color: rgb(24, 33, 56);
 }
 
 .why-container-div {
@@ -62,7 +62,7 @@ code {
 	display: flex;
 	justify-content: center;
 	/* border: 1px solid black; */
-	padding-bottom: .5rem;
+	padding: .5rem 0;
 }
 
 .circle-icon {
@@ -77,13 +77,13 @@ code {
 }
 
 .icon-container {
-	padding: .5rem 0;
+	padding: 1rem 0;
 	margin-bottom: 1.5rem;
 }
 
 .icon-container:hover {
-	border-top: .5px solid rgb(193, 193, 193);
 	border-bottom: .5px solid rgb(193, 193, 193);
+	padding-top: .7rem;
 	transition: .5s all;
 	cursor: pointer;
 }
@@ -93,5 +93,32 @@ code {
 }
 
 .carousel-inner {
-	height: 700px;
+	height: 750px;
+}
+
+/* .fourth-section {
+	border: 1px solid black;
+} */
+
+.mission-container {
+	/* border: 1px solid black; */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.mission-container p {
+	text-align: center;
+}
+
+.mission-car {
+	width: 35%;
+}
+
+.mission-container h4 {
+	margin: -2rem 0 1.5rem;
+}
+
+.mission-container p {
+	width: 50%;
 }
