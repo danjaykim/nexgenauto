@@ -53,14 +53,13 @@ code {
 
 .why-container-div {
 	width: 65%;
-	gap: 1.5rem;
-	padding-right: 4rem;
+	gap: 2rem;
+	padding-right: 4.5rem;
 }
 
 .arsenal {
 	display: flex;
 	justify-content: center;
-	/* margin-left: 4.5rem; */
 }
 
 .circle-icon {
@@ -72,4 +71,15 @@ code {
 	line-height: 100px;
 	vertical-align: middle;
 	padding-top: 25px;
+}
+
+.icon-container {
+	padding: 2rem .5rem;
+}
+
+.icon-container:hover {
+	border: 1px solid rgb(193, 193, 193);
+	border-radius: 4px;
+	cursor: pointer;
+	transition: .3s ease-out;
 }
