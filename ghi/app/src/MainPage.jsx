@@ -1,10 +1,29 @@
 import { Link } from "react-router-dom";
-
+import { useState, useEffect } from "react";
 
 
 export default function MainPage() {
+  const [carModels, getCarModels] = useState([]);
+
+  const fetchCarModels = async () => {
+    const response = await fetch('http://localhost:8100/api/models/');
+    if (response.ok) {
+      const carModelData = await response.json();
+      // console.log(carModelData);
+      getCarModels(carModelData.models)
+    }
+  }
+
+  useEffect(() => {
+    fetchCarModels();
+  }, [])
+
+  console.log(carModels);
+
+
   return (
     <>
+      {/* Hero */}
       <div className="hero-container p-5 my-4">
         <div className="hero-text">
           <h1 className="hero-title display-5 fw-bold border-bottom opacity-75">CarCar</h1>
@@ -13,15 +32,16 @@ export default function MainPage() {
         <Link className="hero-btn" to="/models">Models</Link>
       </div>
 
+      {/* Second Section */}
       <div className="main-containers why-container my-5 d-flex flex-column">
         <p className="arsenal h4 w-20 mb-3">YOUR ARSENAL</p>
         <div className="why-container-div d-flex w-60 m-auto">
 
           {/* Inventory - Off Canvas */}
           <div className="icon-container text-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithInventory" aria-controls="offcanvasWithInventory">
-            <i className="circle-icon fa-duotone fa-solid fa-car fa-3x"></i>
+            <i className="circle-icon fa-duotone fa-solid fa-car fa-2x"></i>
             <p className="pt-4">INVENTORY</p>
-            <p>Safely store all your vehicle data with CarCar and know that you're in good hands</p>
+            <p>Safely store your vehicle data with CarCar and know that you're in good hands</p>
           </div>
           <div className="offcanvas offcanvas-start" data-bs-scroll="true" tabIndex="-1" id="offcanvasWithInventory" aria-labelledby="offcanvasWithInventory">
             <div className="offcanvas-header">
@@ -54,7 +74,7 @@ export default function MainPage() {
 
           {/* Sales - Off Canvas */}
           <div className="icon-container text-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithSales" aria-controls="offcanvasWithSales">
-            <i className="circle-icon fa-solid fa-user-tie fa-3x"></i>
+            <i className="circle-icon fa-solid fa-user-tie fa-2x"></i>
             <p className="pt-4">SALES</p>
             <p>The heart of the organization responsible for selling your vehicles</p>
           </div>
@@ -90,7 +110,7 @@ export default function MainPage() {
 
           {/* Services - Off Canvas */}
           <div className="icon-container text-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithServices" aria-controls="offcanvasWithServices">
-            <i className="circle-icon fa-solid fa-car-burst fa-3x"></i>
+            <i className="circle-icon fa-solid fa-car-burst fa-2x"></i>
             <p className="pt-4">SERVICES</p>
             <p>The muscle ensuring your customers vehicles are in top shape</p>
           </div>
@@ -124,6 +144,28 @@ export default function MainPage() {
 
         </div>
       </div>
+
+      {/* Third Section - Featured Models */}
+      <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
+        <div className="carousel-inner">
+          {carModels.map((carModel, index) => {
+            return (
+              <div key={carModel.id} className={`carousel-item ${index === 0 ? 'active' : ''}`} >
+                <img src={carModel.picture_url} className="d-block w-100" alt="Model Image" />
+              </div>
+            );
+          })}
+        </div>
+        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Next</span>
+        </button>
+      </div >
+
     </>
   );
 }

@@ -19,7 +19,8 @@ code {
 	padding: 1rem 0;
 }
 
-.hero-container {
+.hero-container,
+.carousel-container {
 	width: 100vw;
 	margin: auto;
 	width: 100%;
@@ -60,12 +61,14 @@ code {
 .arsenal {
 	display: flex;
 	justify-content: center;
+	/* border: 1px solid black; */
+	padding-bottom: .5rem;
 }
 
 .circle-icon {
 	background: rgb(239, 239, 239);
-	width: 100px;
-	height: 100px;
+	width: 50px;
+	height: 50px;
 	border-radius: 50%;
 	text-align: center;
 	line-height: 100px;
@@ -74,11 +77,21 @@ code {
 }
 
 .icon-container {
-	padding: 2rem 1rem;
+	padding: .5rem 0;
+	margin-bottom: 1.5rem;
 }
 
 .icon-container:hover {
-	border: 1px solid rgb(193, 193, 193);
-	border-radius: 4px;
+	border-top: .5px solid rgb(193, 193, 193);
+	border-bottom: .5px solid rgb(193, 193, 193);
+	transition: .5s all;
 	cursor: pointer;
+}
+
+.carousel {
+	margin: 3rem 0;
+}
+
+.carousel-inner {
+	height: 700px;
 }
