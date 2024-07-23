@@ -20,10 +20,12 @@ import ServiceList from "./ServiceList"
 import ServiceForm from "./ServiceForm"
 import ServiceHistory from "./ServiceHistory"
 
-function App() {
+
+
+
+export default function App() {
 	return (
 		<BrowserRouter>
-			{/* <main className="main-container"> */}
 			<div className="main-containers">
 				<Nav />
 			</div>
@@ -54,9 +56,6 @@ function App() {
 					<Route path="/appointments/history" element={<ServiceHistory />} />
 				</Routes>
 			</div>
-			{/* </main> */}
 		</BrowserRouter>
 	);
 }
-
-export default App;
