@@ -50,7 +50,7 @@ export default function MainPage() {
             </div>
             <div className="offcanvas-body">
               <p>Write a semi-detailed explanation of the Inventory Category</p>
-              <p>possibly an img here</p>
+              <img src="/images/row-of-cars.avif" className="offcanvas-img" alt="Row of cars" />
               <hr />
               <p>MANUFACTURERS</p>
               <ul>
@@ -85,7 +85,7 @@ export default function MainPage() {
             </div>
             <div className="offcanvas-body">
               <p>Write a semi-detailed explanation of the Sales Category</p>
-              <p>possibly an img here</p>
+              <img src="/images/pexels-gustavo-fring-2.jpg" className="offcanvas-img" alt="Car salesman talking with customer" />
               <hr />
               <p>SALESPEOPLE (STAFF)</p>
               <ul>
@@ -121,7 +121,7 @@ export default function MainPage() {
             </div>
             <div className="offcanvas-body">
               <p>Write a semi-detailed explanation of the Service Category</p>
-              <p>possibly an img here</p>
+              <img src="/images/auto-tech.jpg" className="offcanvas-img" alt="Car technician" />
               <hr />
               <p>TECHNICIANS (STAFF)</p>
               <ul>
@@ -145,7 +145,7 @@ export default function MainPage() {
         </div>
       </div>
 
-      {/* Third Section - Featured Models */}
+      {/* Third Section - Featured Models Carousel */}
       <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-inner">
           {carModels.map((carModel, index) => {
