@@ -123,3 +123,11 @@ code {
 .mission-container p {
 	width: 50%;
 }
+
+/* Inventory - Manufacturers */
+
+.manu-title {
+	margin: 2rem 0;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid lightgray;
+}

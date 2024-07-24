@@ -90,6 +90,7 @@ def api_manufacturers(request):
         try:
             content = json.loads(request.body)
 
+            # ==== If you decide to add Pexels Image ==== #
             # photo = get_photo(content['name'])
             # content.update(photo)
 
