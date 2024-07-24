@@ -136,3 +136,20 @@ code {
 	box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 	transition: .5s all;
 }
+
+/* Inventory - Models */
+
+.model-name {
+	color: white;
+	border-top: 1px solid white;
+	padding: 2rem 0;
+}
+
+.model-card {
+	border-radius: 5px;
+}
+
+.model-card:hover {
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+	transition: .5s all;
+}

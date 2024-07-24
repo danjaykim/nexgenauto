@@ -31,13 +31,13 @@ export default function ManufacturerList() {
 
     return (
         <div>
-            <h2 className="text-center manu-title">Current Inventory Manufacturers</h2>
+            <h2 className="text-center manu-title">Current Manufacturers in Inventory</h2>
             <div className="row row-cols-1 row-cols-md-3 g-4">
                 {manus.map(manu => {
                     return (
                         <div className="col" key={manu.id}>
                             <div className="card manu-card">
-                                <img src={manu.picture_url} className="card-img-top" alt="..." />
+                                <img src={manu.picture_url} className="card-img-top" alt="Manufacturer logo" />
                                 <hr />
                                 <div className="card-body text-center">
                                     <h3>{manu.name}</h3>
@@ -46,32 +46,7 @@ export default function ManufacturerList() {
                         </div>
                     );
                 })}
-
             </div>
         </div>
     )
 }
-
-
-
-
-
-// <h1 className="display-5 fw-bold">Manufacturers</h1>
-// <table className="table table-striped">
-//     <thead>
-//         <tr>
-//             <th>Name</th>
-//             <th>Logo</th>
-//         </tr>
-//     </thead>
-//     <tbody>
-//         {manus.map(manu => {
-//             return (
-//                 <tr key={manu.id}>
-//                     <td>{manu.name}</td>
-//                     <td>{manu.picture_url ? <img src={manu.picture_url} width="200" /> : 'N/A'}</td>
-//                 </tr>
-//             );
-//         })}
-//     </tbody>
-// </table>
