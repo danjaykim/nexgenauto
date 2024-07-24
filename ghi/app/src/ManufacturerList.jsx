@@ -36,7 +36,7 @@ export default function ManufacturerList() {
                 {manus.map(manu => {
                     return (
                         <div className="col" key={manu.id}>
-                            <div className="card">
+                            <div className="card manu-card">
                                 <img src={manu.picture_url} className="card-img-top" alt="..." />
                                 <hr />
                                 <div className="card-body text-center">
