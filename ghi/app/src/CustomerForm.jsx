@@ -80,7 +80,7 @@ export default function CustomerForm() {
                         <div className="form-floating mb-3">
                             <input onChange={handleFormChange} value={formData.last_name} placeholder="Last name" required type="text" name="last_name"
                                 id="last_name" className="form-control" />
-                            <label htmlFor="style">Last name</label>
+                            <label htmlFor="last_name">Last name</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input onChange={handleFormChange} value={formData.address} placeholder="Address" type="text" name="address" id="address"

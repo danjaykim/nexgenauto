@@ -36,6 +36,7 @@ export default function ManufacturerList() {
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Logo</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +44,7 @@ export default function ManufacturerList() {
                         return (
                             <tr key={manu.id}>
                                 <td>{manu.name}</td>
+                                <td>{manu.picture_url ? <img src={manu.picture_url} width="200" /> : 'N/A'}</td>
                             </tr>
                         );
                     })}

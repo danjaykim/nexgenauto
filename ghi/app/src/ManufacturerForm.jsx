@@ -6,16 +6,25 @@ export default function ManufacturerForm() {
 
     // States / Hooks:
 
-    const [manufacturer, setManufacturer] = useState('');
+    const [manufacturerData, setManufacturerData] = useState({
+        name: '',
+        picture_url: '',
+    });
+
     const navigate = useNavigate();
 
     // ==========================================
 
-    // Name state handler:
+    // Form change handler:
 
-    const handleNameChange = (event) => {
+    const handleFormChange = (event) => {
         const value = event.target.value;
-        setManufacturer(value);
+        const inputName = event.target.name;
+
+        setManufacturerData({
+            ...manufacturerData,
+            [inputName]: value,
+        })
     }
 
     // ==========================================
@@ -25,20 +34,21 @@ export default function ManufacturerForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const data = {};
-        data.name = manufacturer;
-
         const url = "http://localhost:8100/api/manufacturers/";
         const fetchConfig = {
             method: "POST",
-            body: JSON.stringify(data),
+            body: JSON.stringify(manufacturerData),
             headers: { "Content-Type": "application/json" },
         }
 
         try {
             const response = await fetch(url, fetchConfig);
             if (response.ok) {
-                setManufacturer('');
+                setManufacturerData({
+                    "name": '',
+                    "picture_url": '',
+                });
+
                 navigate("/manufacturers")
             } else {
                 const errorDetails = await response.json();
@@ -60,9 +70,14 @@ export default function ManufacturerForm() {
                     <h1>Create a new manufacturer</h1>
                     <form onSubmit={handleSubmit} id="create-manufacturer-form">
                         <div className="form-floating mb-3">
-                            <input onChange={handleNameChange} placeholder="Manufacturer" value={manufacturer} required type="text" name="manufacturer"
-                                id="manufacturer" className="form-control" />
-                            <label htmlFor="manufacturer">Manufacturer name</label>
+                            <input onChange={handleFormChange} placeholder="Manufacturer name" value={manufacturerData.name} required type="text" name="name"
+                                id="manufacturer_name" className="form-control" />
+                            <label htmlFor="manufacturer_name">Manufacturer name</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <input onChange={handleFormChange} placeholder="Manufacturer logo" value={manufacturerData.picture_url} type="text" name="picture_url"
+                                id="manufacturer_logo" className="form-control" />
+                            <label htmlFor="manufacturer_logo">Manufacturer Logo Picture URL (Optional)</label>
                         </div>
                         <button type="submit" className="btn btn-primary mt-2">Create</button>
                     </form>
