@@ -67,9 +67,7 @@ export default function SalesPersonList() {
                                                     <p key={sale.id}>{sale.customer.first_name} {sale.customer.last_name}</p>
                                                 ))}
                                             </div>
-                                        ) : (
-                                            <p>No sales currently</p>
-                                        )}
+                                        ) : <p>No sales currently</p>}
                                     </div>
                                 </div>
                             </div>

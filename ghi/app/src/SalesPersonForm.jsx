@@ -10,6 +10,7 @@ export default function SalesPersonForm() {
         first_name: '',
         last_name: '',
         employee_id: '',
+        picture_url: '',
     });
 
     const navigate = useNavigate();
