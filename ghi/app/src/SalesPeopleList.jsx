@@ -7,6 +7,8 @@ export default function SalesPersonList() {
 
     const [salespeople, setSalespeople] = useState([]);
 
+    console.log(salespeople);
+
     // ====================================
 
     // Fetch salespeople data:
@@ -16,8 +18,19 @@ export default function SalesPersonList() {
         const response = await fetch(salespeopleUrl);
         if (response.ok) {
             const data = await response.json();
-            // console.log(data);
-            setSalespeople(data.salespeople);
+            const salespeopleData = data.salespeople;
+
+            const salesUrl = "http://localhost:8090/api/sales/";
+            const salesResponse = await fetch(salesUrl);
+            if (salesResponse.ok) {
+                const salesData = await salesResponse.json();
+                // console.log(salesData);
+                const salespersonDataWithSalesData = salespeopleData.map(salesperson => ({
+                    ...salesperson,
+                    sales: salesData.sales.filter(sale => sale.salesperson.id === salesperson.id)
+                }))
+                setSalespeople(salespersonDataWithSalesData);
+            }
         }
     }
 
@@ -35,27 +48,35 @@ export default function SalesPersonList() {
 
     return (
         <div>
-            <h1 className="mt-4 mb-3">Salespeople</h1>
-            <table className="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>Employee ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {salespeople.map(salesperson => {
-                        return (
-                            <tr key={salesperson.id}>
-                                <td>{salesperson.employee_id}</td>
-                                <td>{salesperson.first_name}</td>
-                                <td>{salesperson.last_name}</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+            <h2 className="text-center">Salespeople</h2>
+            <div className="row row-cols-1 row-cols-md-3 g-4">
+                {salespeople.map(salesperson => {
+                    return (
+                        <div className="col" key={salesperson.id}>
+                            <div className="card salesperson-card">
+                                {/* <img src={salesperson.picture_url} className="card-img-top" alt="Salesperson image" /> */}
+                                <div className="card-body text-center">
+                                    <h5>{salesperson.first_name} {salesperson.last_name}</h5>
+                                    <p>{salesperson.employee_id}</p>
+                                    <hr />
+                                    <div>
+                                        <p>{salesperson.sales.length} Sales Made:</p>
+                                        {salesperson.sales.length > 0 ? (
+                                            <div>
+                                                {salesperson.sales.map(sale => (
+                                                    <p key={sale.id}>{sale.customer.first_name} {sale.customer.last_name}</p>
+                                                ))}
+                                            </div>
+                                        ) : (
+                                            <p>No sales currently</p>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
-    )
+    );
 }
