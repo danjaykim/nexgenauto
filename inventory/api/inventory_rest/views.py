@@ -132,7 +132,7 @@ def api_manufacturer(request, pk):
             content = json.loads(request.body)
             manufacturer = Manufacturer.objects.get(id=pk)
 
-            props = ["name"]
+            props = ["name", "picture_url"]
             for prop in props:
                 if prop in content:
                     setattr(manufacturer, prop, content[prop])
