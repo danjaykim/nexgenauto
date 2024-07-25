@@ -56,7 +56,7 @@ export default function SalesPersonList() {
                             <div className="card salesperson-card">
                                 <div className="card-body text-center">
                                     <div>
-                                        <img src={salesperson.picture_url} alt="Salesperson Headshot Photo" width="200" className="mb-3 headshot-container" />
+                                        <img src={salesperson.picture_url} alt="Salesperson Headshot Photo" className="mb-3 headshot-container" />
                                     </div>
                                     <h5>{salesperson.first_name} {salesperson.last_name}</h5>
                                     <p>{salesperson.employee_id}</p>

@@ -82,6 +82,9 @@ def api_list_salespeople(request):
         )
     else:  # POST
         content = json.loads(request.body)
+        # Check if picture_url is empty, if so set default value
+        if not content.get("picture_url"):
+            content["picture_url"] = Salesperson.DEFAULT_HEADSHOT_URL
         new_salesperson = Salesperson.objects.create(**content)
         return JsonResponse(
             new_salesperson,

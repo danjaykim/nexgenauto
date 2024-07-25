@@ -37,6 +37,7 @@ export default function SalesPersonForm() {
         event.preventDefault();
 
         const salespeopleUrl = "http://localhost:8090/api/salespeople/";
+
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(formData),
