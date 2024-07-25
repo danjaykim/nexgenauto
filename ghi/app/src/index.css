@@ -132,7 +132,9 @@ code {
 	border-bottom: 1px solid lightgray;
 }
 
-.manu-card:hover {
+.manu-card:hover,
+.auto-card:hover,
+.salesperson-card:hover {
 	box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 	transition: .5s all;
 }
@@ -154,6 +156,52 @@ code {
 	transition: .5s all;
 }
 
+/* Automobiles */
+
+/* .card.sold:hover {
+	background: red;
+}
+
+.card.available:hover {
+	background: green;
+} */
+
+.card:hover .sold {
+	font-size: 3rem;
+	transition: .5s all;
+	color: red;
+	font-weight: 600;
+}
+
+.card:hover .available {
+	font-size: 3rem;
+	transition: .5s all;
+	color: limegreen;
+	font-weight: 600;
+}
+
+/* Salespeople */
+
+.hs-div-container {
+	margin-top: 1rem;
+}
+
+.headshot-container {
+	border: 1px solid lightgray;
+	border-radius: 50%;
+	max-width: 200px;
+}
+
+.sp-name {
+	margin: 1rem 0 .5rem;
+	font-weight: 600;
+}
+
+
+
+
+
+/* MEDIA QUERIES */
 
 @media (width > 1500px) {
 	.carousel {
@@ -164,12 +212,4 @@ code {
 	.carousel-inner {
 		border-radius: 5px;
 	}
-}
-
-/* Salespeople */
-
-.headshot-container {
-	border: 1px solid black;
-	border-radius: 50%;
-	max-width: 200px;
 }

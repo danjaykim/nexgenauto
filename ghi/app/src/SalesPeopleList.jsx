@@ -48,25 +48,25 @@ export default function SalesPersonList() {
 
     return (
         <div>
-            <h2 className="text-center">Salespeople</h2>
+            <h2 className="text-center manu-title">Salespeople</h2>
             <div className="row row-cols-1 row-cols-md-3 g-4">
                 {salespeople.map(salesperson => {
                     return (
                         <div className="col" key={salesperson.id}>
                             <div className="card salesperson-card">
                                 <div className="card-body text-center">
-                                    <div>
+                                    <div className="hs-div-container">
                                         <img src={salesperson.picture_url} alt="Salesperson Headshot Photo" className="mb-3 headshot-container" />
                                     </div>
-                                    <h5>{salesperson.first_name} {salesperson.last_name}</h5>
-                                    <p>{salesperson.employee_id}</p>
+                                    <h5 className="sp-name">{salesperson.first_name} {salesperson.last_name}</h5>
+                                    <p>Employee ID: <b>{salesperson.employee_id}</b></p>
                                     <hr />
                                     <div>
-                                        <p>{salesperson.sales.length} Sales Made:</p>
+                                        <p><b>{salesperson.sales.length}</b> Sales Made:</p>
                                         {salesperson.sales.length > 0 ? (
                                             <div>
-                                                {salesperson.sales.map(sale => (
-                                                    <p key={sale.id}>{sale.customer.first_name} {sale.customer.last_name}</p>
+                                                {salesperson.sales.map((sale, index) => (
+                                                    <p key={sale.id}>{index + 1}) VIN: {sale.automobile.vin}</p>
                                                 ))}
                                             </div>
                                         ) : <p>No sales currently</p>}

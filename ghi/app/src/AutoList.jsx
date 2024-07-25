@@ -5,6 +5,7 @@ export default function AutoList() {
     // States:
 
     const [autos, setAutos] = useState([]);
+    console.log(autos);
 
     // =============================================
 
@@ -30,33 +31,24 @@ export default function AutoList() {
 
     return (
         <div>
-            <h1 className="display-5 fw-bold">Automobiles</h1>
-            <table className="table table-striped">
-                <thead>
-                    <tr>
-                        <th>VIN</th>
-                        <th>Color</th>
-                        <th>Year</th>
-                        <th>Model</th>
-                        <th>Manufacturer</th>
-                        <th>Sold</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {autos.map(auto => {
-                        return (
-                            <tr key={auto.id}>
-                                <td>{auto.vin}</td>
-                                <td>{auto.color}</td>
-                                <td>{auto.year}</td>
-                                <td>{auto.model.name}</td>
-                                <td>{auto.model.manufacturer.name}</td>
-                                <td>{auto.sold ? "SOLD" : "AVAILABLE"}</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+            <h2 className="text-center manu-title">Automobiles</h2>
+            <div className="row row-cols-1 row-cols-md-3 g-4">
+                {autos.map(auto => {
+                    return (
+                        <div className="col" key={auto.id}>
+                            <div className="card auto-card">
+                                <div className="card-body text-center">
+                                    <h5>{auto.year} {auto.model.manufacturer.name} {auto.model.name}</h5>
+                                    <hr />
+                                    <p>VIN: {auto.vin}</p>
+                                    <p>Color: {auto.color}</p>
+                                    <p className={auto.sold ? 'sold' : 'available'}>{auto.sold ? 'SOLD' : 'AVAILABLE'}</p>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     )
 }
