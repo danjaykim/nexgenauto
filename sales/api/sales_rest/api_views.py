@@ -26,6 +26,7 @@ class SalespersonEncoder(ModelEncoder):
         "first_name",
         "last_name",
         "employee_id",
+        "picture_url",
     ]
 
 

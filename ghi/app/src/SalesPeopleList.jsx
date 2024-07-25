@@ -54,8 +54,10 @@ export default function SalesPersonList() {
                     return (
                         <div className="col" key={salesperson.id}>
                             <div className="card salesperson-card">
-                                {/* <img src={salesperson.picture_url} className="card-img-top" alt="Salesperson image" /> */}
                                 <div className="card-body text-center">
+                                    <div>
+                                        <img src={salesperson.picture_url} alt="Salesperson Headshot Photo" width="200" className="mb-3 headshot-container" />
+                                    </div>
                                     <h5>{salesperson.first_name} {salesperson.last_name}</h5>
                                     <p>{salesperson.employee_id}</p>
                                     <hr />
