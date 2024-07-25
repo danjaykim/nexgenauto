@@ -18,7 +18,7 @@ export default function MainPage() {
     fetchCarModels();
   }, [])
 
-  console.log(carModels);
+  // console.log(carModels);
 
 
   return (
