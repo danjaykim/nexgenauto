@@ -14,10 +14,11 @@ code {
 
 /* Fonts */
 
-p {
+.lead {
 	font-family: "Anek Devanagari", sans-serif;
 }
 
+p,
 h2,
 h3,
 h4,
@@ -77,6 +78,8 @@ div,
 	color: rgb(24, 33, 56);
 }
 
+/* Second section */
+
 .why-container-div {
 	width: 65%;
 	gap: 2.2rem;
@@ -111,6 +114,20 @@ div,
 	padding-top: .7rem;
 	transition: .5s all;
 	cursor: pointer;
+}
+
+li {
+	list-style: none;
+	margin-bottom: .5rem;
+}
+
+.li-link {
+	text-decoration: none;
+}
+
+.li-link:hover {
+	border-bottom: 1px solid darkgray;
+	transition: .5s ease-in;
 }
 
 .offcanvas-img {

@@ -93,7 +93,9 @@ export default function SalesHistory() {
                     </div>
                 ))
             ) : (
-                <p className="salesperson-nosales">Currently no sales for this salesperson</p>
+                <p className="salesperson-nosales">
+                    Currently no sales for this salesperson
+                </p>
             )}
 
         </div >
