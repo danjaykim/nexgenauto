@@ -12,8 +12,8 @@ export default function Nav() {
 
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
-            <li className="nav-item dropdown main-nav">
-              <NavLink className="nav-link dropdown-toggle fw-medium main-nav-2" aria-current="page" data-bs-toggle="dropdown" to="#" aria-expanded="false">Inventory</NavLink>
+            <li className="nav-item dropdown main-nav-container">
+              <NavLink className="nav-link dropdown-toggle fw-medium main-nav" aria-current="page" data-bs-toggle="dropdown" to="#" aria-expanded="false"><b>Inventory</b></NavLink>
               <ul className="dropdown-menu">
                 <Link className="dropdown-item" aria-current="page" to="/manufacturers">Manufacturers</Link>
                 <Link className="dropdown-item" aria-current="page" to="/manufacturers/create">Create a Manufacturer</Link>
@@ -25,8 +25,8 @@ export default function Nav() {
                 <Link className="dropdown-item" aria-current="page" to="/automobiles/create">Create an Automobile</Link>
               </ul>
             </li>
-            <li className="nav-item dropdown main-nav">
-              <NavLink className="nav-link dropdown-toggle fw-medium main-nav" aria-current="page" data-bs-toggle="dropdown" to="#" aria-expanded="false">Sales</NavLink>
+            <li className="nav-item dropdown main-nav-container">
+              <NavLink className="nav-link dropdown-toggle fw-medium main-nav" aria-current="page" data-bs-toggle="dropdown" to="#" aria-expanded="false"><b>Sales</b></NavLink>
               <ul className="dropdown-menu">
                 <Link className="dropdown-item" aria-current="page" to="/salespeople">Salespeople</Link>
                 <Link className="dropdown-item" aria-current="page" to="/salespeople/create">Add a Salesperson</Link>
@@ -40,8 +40,8 @@ export default function Nav() {
                 <Link className="dropdown-item" aria-current="page" to="/sales/history">Sales History</Link>
               </ul>
             </li>
-            <li className="nav-item dropdown main-nav">
-              <NavLink className="nav-link dropdown-toggle fw-medium main-nav" aria-current="page" data-bs-toggle="dropdown" to="#" aria-expanded="false">Services</NavLink>
+            <li className="nav-item dropdown main-nav-container">
+              <NavLink className="nav-link dropdown-toggle fw-medium main-nav" aria-current="page" data-bs-toggle="dropdown" to="#" aria-expanded="false"><b>Services</b></NavLink>
               <ul className="dropdown-menu">
                 <Link className="dropdown-item" aria-current="page" to="/technicians">Technicians</Link>
                 <Link className="dropdown-item" aria-current="page" to="/technicians/create">Add a Technician</Link>

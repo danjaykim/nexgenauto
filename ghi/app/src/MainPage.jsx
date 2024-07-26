@@ -27,7 +27,7 @@ export default function MainPage() {
       <div className="hero-container p-5 my-4">
         <div className="hero-text">
           <h1 className="hero-title display-5 fw-bold border-bottom opacity-75">CarCar</h1>
-          <p className="lead col-md-8 fs-4 opacity-75 pt-4">The premiere solution for automobile dealership management</p>
+          <p className="hero-subtitle lead col-md-8 fs-4 opacity-75 pt-4">The premiere solution for automobile dealership management</p>
         </div>
         <Link className="hero-btn" to="/models">Models</Link>
       </div>
@@ -40,7 +40,7 @@ export default function MainPage() {
           {/* Inventory - Off Canvas */}
           <div className="icon-container text-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithInventory" aria-controls="offcanvasWithInventory">
             <i className="circle-icon fa-duotone fa-solid fa-car fa-2x"></i>
-            <p className="pt-4">INVENTORY</p>
+            <p className="pt-4 arsenal-p">INVENTORY</p>
             <p>Your dealership's automobile data secure and at your fingertips</p>
           </div>
           <div className="offcanvas offcanvas-start" data-bs-scroll="true" tabIndex="-1" id="offcanvasWithInventory" aria-labelledby="offcanvasWithInventory">
@@ -76,7 +76,7 @@ export default function MainPage() {
           {/* Sales - Off Canvas */}
           <div className="icon-container text-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithSales" aria-controls="offcanvasWithSales">
             <i className="circle-icon fa-solid fa-user-tie fa-2x"></i>
-            <p className="pt-4">SALES</p>
+            <p className="pt-4 arsenal-p">SALES</p>
             <p>The heart of the organization responsible for selling your vehicles</p>
           </div>
           <div className="offcanvas offcanvas-start" data-bs-scroll="true" tabIndex="-1" id="offcanvasWithSales" aria-labelledby="offcanvasWithSales">
@@ -113,7 +113,7 @@ export default function MainPage() {
           {/* Services - Off Canvas */}
           <div className="icon-container text-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithServices" aria-controls="offcanvasWithServices">
             <i className="circle-icon fa-solid fa-car-burst fa-2x"></i>
-            <p className="pt-4">SERVICES</p>
+            <p className="pt-4 arsenal-p">SERVICES</p>
             <p>The muscle ensuring your customers vehicles are in top shape</p>
           </div>
           <div className="offcanvas offcanvas-start" data-bs-scroll="true" tabIndex="-1" id="offcanvasWithServices" aria-labelledby="offcanvasWithServices">
