@@ -3,8 +3,8 @@ import { NavLink, Link } from 'react-router-dom';
 export default function Nav() {
   return (
     <nav className="navbar navbar-expand-lg border-bottom main-containers">
-      <div className="container-fluid">
-        <NavLink className="navbar-brand fw-bold" to="/">CarCar</NavLink>
+      <div className="container-fluid carcar-main-logo">
+        <NavLink className="navbar-brand" to="/">CarCar</NavLink>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -12,9 +12,9 @@ export default function Nav() {
 
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
-            <li className="nav-item dropdown">
-              <NavLink className="nav-link dropdown-toggle fw-medium" aria-current="page" data-bs-toggle="dropdown" to="#" aria-expanded="false">Inventory</NavLink>
-              <ul className="dropdown-menu bg-dark-subtle">
+            <li className="nav-item dropdown main-nav">
+              <NavLink className="nav-link dropdown-toggle fw-medium main-nav-2" aria-current="page" data-bs-toggle="dropdown" to="#" aria-expanded="false">Inventory</NavLink>
+              <ul className="dropdown-menu">
                 <Link className="dropdown-item" aria-current="page" to="/manufacturers">Manufacturers</Link>
                 <Link className="dropdown-item" aria-current="page" to="/manufacturers/create">Create a Manufacturer</Link>
                 <hr className="dropdown-divider"></hr>
@@ -25,8 +25,8 @@ export default function Nav() {
                 <Link className="dropdown-item" aria-current="page" to="/automobiles/create">Create an Automobile</Link>
               </ul>
             </li>
-            <li className="nav-item dropdown">
-              <NavLink className="nav-link dropdown-toggle fw-medium" aria-current="page" data-bs-toggle="dropdown" to="#" aria-expanded="false">Sales</NavLink>
+            <li className="nav-item dropdown main-nav">
+              <NavLink className="nav-link dropdown-toggle fw-medium main-nav" aria-current="page" data-bs-toggle="dropdown" to="#" aria-expanded="false">Sales</NavLink>
               <ul className="dropdown-menu">
                 <Link className="dropdown-item" aria-current="page" to="/salespeople">Salespeople</Link>
                 <Link className="dropdown-item" aria-current="page" to="/salespeople/create">Add a Salesperson</Link>
@@ -40,8 +40,8 @@ export default function Nav() {
                 <Link className="dropdown-item" aria-current="page" to="/sales/history">Sales History</Link>
               </ul>
             </li>
-            <li className="nav-item dropdown">
-              <NavLink className="nav-link dropdown-toggle fw-medium" aria-current="page" data-bs-toggle="dropdown" to="#" aria-expanded="false">Services</NavLink>
+            <li className="nav-item dropdown main-nav">
+              <NavLink className="nav-link dropdown-toggle fw-medium main-nav" aria-current="page" data-bs-toggle="dropdown" to="#" aria-expanded="false">Services</NavLink>
               <ul className="dropdown-menu">
                 <Link className="dropdown-item" aria-current="page" to="/technicians">Technicians</Link>
                 <Link className="dropdown-item" aria-current="page" to="/technicians/create">Add a Technician</Link>

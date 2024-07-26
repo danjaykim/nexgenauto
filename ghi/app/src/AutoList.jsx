@@ -37,7 +37,7 @@ export default function AutoList() {
                     return (
                         <div className="col" key={auto.id}>
                             <div className="card auto-card">
-                                <div className="card-body text-center">
+                                <div className="card-body text-center auto-card">
                                     <h5>{auto.year} {auto.model.manufacturer.name} {auto.model.name}</h5>
                                     <hr />
                                     <p>VIN: {auto.vin}</p>

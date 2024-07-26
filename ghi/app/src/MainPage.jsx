@@ -170,10 +170,21 @@ export default function MainPage() {
       <div className="main-containers fourth-section">
         <div className="mission-container">
           <img src="images/car-white-background.avif" className="mission-car" alt="White super car" />
-          <h4>Our Mission</h4>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae adipisci harum corporis fugiat,
-            non iusto suscipit doloremque similique reprehenderit libero sed quidem facere blanditiis architecto
-            aperiam debitis vero perferendis quae!</p>
+          <h4>Our Message to You</h4>
+          <p>
+            CarCar is dedicated to providing the top-of-the-line Dealership Management Software to you. From inventory, sales, and servicing,
+            CarCar provides intensive data management to streamline your business. Our comprehensive surplus of tools covers every single aspect
+            of dealership operations - from inventory management and service scheduling to sales tracking and lorem ipsum.
+          </p>
+          <p>
+            CarCar's easy to use interface ensures that you and your team can quickly adapt and maximize productivity. Our advanced
+            data management system only optimizes workflow and business performance! Our software features real-time updates and seamless integration
+            with all other systems. Another lorem ipsum to take up some space!
+          </p>
+          <p>
+            Thank you for choosing and trusting in CarCar as your Dealership Management Software partner. We are truly appreciative and
+            will always be commited to helping your business achieve its goals. Cheers!
+          </p>
         </div>
       </div>
 

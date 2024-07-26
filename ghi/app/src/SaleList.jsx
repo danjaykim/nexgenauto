@@ -7,6 +7,8 @@ export default function SalesList() {
 
     const [sales, setSales] = useState([]);
 
+    console.log(sales);
+
     // ===================================
 
     // Fetch sales data:

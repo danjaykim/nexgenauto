@@ -7,6 +7,8 @@ export default function CustomerList() {
 
     const [customers, setCustomers] = useState([]);
 
+    // console.log(customers);
+
     // ===================================
 
     // Fetch customer data:
@@ -17,7 +19,8 @@ export default function CustomerList() {
         if (response.ok) {
             const data = await response.json();
             // console.log(data);
-            setCustomers(data.customers);
+            const customerData = data.customers
+            setCustomers(customerData);
         }
     }
 
@@ -35,29 +38,26 @@ export default function CustomerList() {
 
     return (
         <div>
-            <h1 className="mt-4 mb-3">Customers</h1>
-            <table className="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Phone Number</th>
-                        <th>Address</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {customers.map(customer => {
-                        return (
-                            <tr key={customer.id}>
-                                <td>{customer.first_name}</td>
-                                <td>{customer.last_name}</td>
-                                <td>{customer.phone_number}</td>
-                                <td>{customer.address}</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+            <h2 className="text-center manu-title">Customers</h2>
+            <div className="row row-cols-1 row-cols-md-3 g-4">
+                {customers.map(customer => {
+                    return (
+                        <div className="col" key={customer.id}>
+                            <div className="card customer-card">
+                                <div className="card-body text-center">
+                                    <h5>{customer.first_name} {customer.last_name}</h5>
+                                    <hr />
+                                    <p>Contact Information:</p>
+                                    <div>{customer.phone_number}</div>
+                                    <div>{customer.address}</div>
+                                    <hr />
+                                    <p>Add purchases here</p>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     )
 }

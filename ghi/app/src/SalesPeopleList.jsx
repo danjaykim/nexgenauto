@@ -7,7 +7,7 @@ export default function SalesPersonList() {
 
     const [salespeople, setSalespeople] = useState([]);
 
-    console.log(salespeople);
+    // console.log(salespeople);
 
     // ====================================
 

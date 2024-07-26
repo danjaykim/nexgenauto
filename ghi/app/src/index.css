@@ -12,6 +12,30 @@ code {
 		monospace;
 }
 
+/* Fonts */
+
+p {
+	font-family: "Anek Devanagari", sans-serif;
+}
+
+h2,
+h3,
+h4,
+.dropdown-item,
+.main-nav {
+	font-family: "DM Sans";
+}
+
+/* Nav */
+
+.navbar-brand {
+	font-weight: 700;
+}
+
+.main-nav {
+	font-size: 1.1rem;
+}
+
 .main-containers {
 	width: 90%;
 	max-width: 1400px;
@@ -134,7 +158,8 @@ code {
 
 .manu-card:hover,
 .auto-card:hover,
-.salesperson-card:hover {
+.salesperson-card:hover,
+.customer-card:hover {
 	box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 	transition: .5s all;
 }
@@ -207,6 +232,10 @@ code {
 	.carousel {
 		max-width: 1500px;
 		margin: auto;
+		border: 1px solid darkgray;
+		border-radius: 8px;
+		padding: 2rem;
+
 	}
 
 	.carousel-inner {
