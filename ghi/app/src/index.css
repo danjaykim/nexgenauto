@@ -97,7 +97,7 @@ div,
 
 .arsenal-p {
 	font-size: 1.2rem;
-	font-weight: 600;
+	font-weight: 500;
 	letter-spacing: .4px;
 }
 
@@ -143,8 +143,6 @@ li {
 	border-radius: 5px;
 }
 
-
-
 .carousel {
 	margin: 3rem 0;
 }
@@ -175,6 +173,10 @@ li {
 
 .mission-container p {
 	width: 50%;
+}
+
+.fourth-section {
+	margin-bottom: 5rem;
 }
 
 /* Inventory - Manufacturers */
@@ -289,11 +291,53 @@ li {
 	font-size: 1.1rem;
 }
 
+.sp-customer {
+	margin: .2rem 0;
+}
+
 .salesperson-nosales {
 	font-size: 1.7rem;
 	text-align: center;
 	margin-top: 5rem;
 	color: red;
+}
+
+.salesperson-history-subtitle {
+	margin: 2rem 0;
+	text-align: center;
+}
+
+.sp-img-container {
+	border: 1px solid lightgray;
+	padding: 1rem;
+	border-radius: 6px;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+/* .sp-detail-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+} */
+
+.sp-body {
+	border: 1px solid lightgray;
+	border-radius: 6px;
+	margin-top: 3rem;
+	max-width: 900px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+}
+
+.sp-customer-container {
+	margin: .5rem 0 2rem;
+}
+
+.breathing-room {
+	margin: 2rem 0;
 }
 
 
@@ -312,4 +356,5 @@ li {
 	.carousel-inner {
 		border-radius: 5px;
 	}
+
 }

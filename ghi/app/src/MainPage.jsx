@@ -49,7 +49,7 @@ export default function MainPage() {
               <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div className="offcanvas-body">
-              <p>At CarCar we pride ourselves in taking care of our partner's inventory data like it's our own!</p>
+              <p>At CarCar we pride ourselves in taking care of our partners inventory data like it's our own!</p>
               <p>There are three sub-categories (Manufacturers, Models, and Automobiles) in our Inventory section</p>
               <img src="/images/row-of-cars.avif" className="offcanvas-img" alt="Row of cars" />
               <hr />

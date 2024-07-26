@@ -71,32 +71,45 @@ export default function SalesHistory() {
 
 
             {filteredSale.length > 0 ? (
-                filteredSale.map(sale => (
-                    <div key={sale.id} className="card mb-3 sp-card-container">
-                        <div className="row g-0">
-                            <div className="col-md-4">
-                                <img src={sale.salesperson.picture_url} className="img-fluid rounded-start" alt="Salesperson headshot" />
+                <>
+                    <div className="sp-detail-container">
+                        <div className="salesperson-history-subtitle">
+                            <h3>{filteredSale[0].salesperson.first_name} {filteredSale[0].salesperson.last_name} has made {filteredSale.length} sale(s)</h3>
+                        </div>
+                        <div>
+                            <div className="sp-img-container">
+                                <img src={filteredSale[0].salesperson.picture_url} className="img-fluid rounded-start salesperson-history-img" alt="Salesperson headshot" />
                             </div>
-                            <div className="col-md-8">
-                                <div className="card-body">
-                                    <h5 className="card-title sp-name">{sale.salesperson.first_name} {sale.salesperson.last_name}</h5>
-                                    <hr />
-                                    <span className="span">Customer:</span>
-                                    <div className="card-text sp-details">{sale.customer.first_name} {sale.customer.last_name}</div>
-                                    <hr />
-                                    <span className="span">Sale Details:</span>
-                                    <div className="sp-details">VIN: {sale.automobile.vin}</div>
-                                    <div className="sp-details">Price Sold: ${sale.price}</div>
-                                </div>
+                            <div className="breathing-room"></div>
+                            <div className="sp-body">
+                                <h5 className="card-title sp-name">{filteredSale[0].salesperson.first_name} {filteredSale[0].salesperson.last_name}</h5>
+                                <hr />
+                                {filteredSale.map(sale => {
+                                    return (
+                                        <div key={sale.id}>
+                                            <div className="sp-customer-container">
+                                                <p className="span sp-customer">Customer:</p>
+                                                <div className="card-text sp-details">{sale.customer.first_name} {sale.customer.last_name}</div>
+                                            </div>
+                                            <div className="sp-customer-container">
+                                                <span className="span sp-customer">Sale Details:</span>
+                                                <div className="sp-details">VIN: {sale.automobile.vin}</div>
+                                                <div className="sp-details">Price Sold: ${sale.price}</div>
+                                                <hr />
+                                            </div>
+                                        </div>
+                                    );
+                                })}
                             </div>
                         </div>
                     </div>
-                ))
+                </>
             ) : (
                 <p className="salesperson-nosales">
                     Currently no sales for this salesperson
                 </p>
-            )}
+            )
+            }
 
         </div >
     )
