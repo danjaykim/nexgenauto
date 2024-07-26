@@ -22,7 +22,9 @@ h2,
 h3,
 h4,
 .dropdown-item,
-.main-nav {
+.main-nav,
+div,
+.salesperson-nosales {
 	font-family: "DM Sans";
 }
 
@@ -224,7 +226,48 @@ h4,
 }
 
 
+/* Sale */
 
+.sale-card2 {
+	padding: 2rem;
+}
+
+
+/* Sale History */
+
+.sph-select {
+	max-width: 600px !important;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.sp-card-container {
+	margin-top: 4rem;
+}
+
+.sp-title {
+	text-align: center;
+	padding-bottom: 2rem;
+}
+
+.sp-name {
+	font-size: 2rem;
+}
+
+.sp-details {
+	font-size: 1.3rem;
+}
+
+.span {
+	font-size: 1.1rem;
+}
+
+.salesperson-nosales {
+	font-size: 1.7rem;
+	text-align: center;
+	margin-top: 5rem;
+	color: red;
+}
 
 
 /* MEDIA QUERIES */

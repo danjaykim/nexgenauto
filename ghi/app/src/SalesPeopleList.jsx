@@ -48,7 +48,7 @@ export default function SalesPersonList() {
 
     return (
         <div>
-            <h2 className="text-center manu-title">Salespeople</h2>
+            <h1 className="text-center manu-title">Salespeople</h1>
             <div className="row row-cols-1 row-cols-md-3 g-4">
                 {salespeople.map(salesperson => {
                     return (

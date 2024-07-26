@@ -46,6 +46,7 @@ export default function SalesHistory() {
     // Prepare filter for mapping of sale:
 
     const filteredSale = sales.filter(sale => sale.salesperson.id === Number(selectedSalesperson));
+    console.log(filteredSale);
 
     // ====================================
 
@@ -54,9 +55,9 @@ export default function SalesHistory() {
 
     return (
         <div>
-            <h1 className="mt-4 mb-3">Salesperson History</h1>
+            <h1 className="mt-4 mb-3 sp-title">Salesperson History</h1>
             <div className="mb-3">
-                <select onChange={handleSalespersonChange} value={selectedSalesperson} required name="salesperson" id="salesperson" className="form-select">
+                <select onChange={handleSalespersonChange} value={selectedSalesperson} required name="salesperson" id="salesperson" className="form-select sph-select">
                     <option value="">Choose a Salesperson</option>
                     {salespeople.map(salesperson => {
                         return (
@@ -67,28 +68,36 @@ export default function SalesHistory() {
                     })};
                 </select>
             </div>
-            <table className="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>Salesperson</th>
-                        <th>Customer</th>
-                        <th>VIN</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filteredSale.map(sale => {
-                        return (
-                            <tr key={sale.id}>
-                                <td>{sale.salesperson.first_name} {sale.salesperson.last_name}</td>
-                                <td>{sale.customer.first_name} {sale.customer.last_name}</td>
-                                <td>{sale.automobile.vin}</td>
-                                <td>${sale.price}</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
-        </div>
+
+
+            {filteredSale.length > 0 ? (
+                filteredSale.map(sale => (
+                    <div key={sale.id} className="card mb-3 sp-card-container">
+                        <div className="row g-0">
+                            <div className="col-md-4">
+                                <img src={sale.salesperson.picture_url} className="img-fluid rounded-start" alt="Salesperson headshot" />
+                            </div>
+                            <div className="col-md-8">
+                                <div className="card-body">
+                                    <h5 className="card-title sp-name">{sale.salesperson.first_name} {sale.salesperson.last_name}</h5>
+                                    <hr />
+                                    <span className="span">Customer:</span>
+                                    <div className="card-text sp-details">{sale.customer.first_name} {sale.customer.last_name}</div>
+                                    <hr />
+                                    <span className="span">Sale Details:</span>
+                                    <div className="sp-details">VIN: {sale.automobile.vin}</div>
+                                    <div className="sp-details">Price Sold: ${sale.price}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            ) : (
+                <p className="salesperson-nosales">Currently no sales for this salesperson</p>
+            )}
+
+        </div >
     )
+
+
 }

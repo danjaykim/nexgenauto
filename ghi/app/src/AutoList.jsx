@@ -31,7 +31,7 @@ export default function AutoList() {
 
     return (
         <div>
-            <h2 className="text-center manu-title">Automobiles</h2>
+            <h1 className="text-center manu-title">Automobiles</h1>
             <div className="row row-cols-1 row-cols-md-3 g-4">
                 {autos.map(auto => {
                     return (

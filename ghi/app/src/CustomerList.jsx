@@ -38,7 +38,7 @@ export default function CustomerList() {
 
     return (
         <div>
-            <h2 className="text-center manu-title">Customers</h2>
+            <h1 className="text-center manu-title">Customers</h1>
             <div className="row row-cols-1 row-cols-md-3 g-4">
                 {customers.map(customer => {
                     return (

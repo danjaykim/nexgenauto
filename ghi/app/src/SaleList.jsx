@@ -33,13 +33,13 @@ export default function SalesList() {
 
     return (
         <div>
-            <h2 className="text-center manu-title">Sales</h2>
+            <h1 className="text-center manu-title">Sales</h1>
             <div className="row row-cols-1 row-cols-md-3 g-4">
                 {sales.map(sale => {
                     return (
                         <div className="col" key={sale.id}>
                             <div className="card sale-card">
-                                <div className="card-body text-center">
+                                <div className="text-center sale-card2">
                                     <h5>Sale ID: {sale.id}</h5>
                                     <div>VIN: <b>{sale.automobile.vin}</b></div>
                                     <div>Price Sold: <b>${sale.price}</b></div>

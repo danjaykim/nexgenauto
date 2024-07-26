@@ -31,7 +31,7 @@ export default function ManufacturerList() {
 
     return (
         <div>
-            <h2 className="text-center manu-title">Current Manufacturers in Inventory</h2>
+            <h1 className="text-center manu-title">Current Manufacturers in Inventory</h1>
             <div className="row row-cols-1 row-cols-md-3 g-4">
                 {manus.map(manu => {
                     return (
