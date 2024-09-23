@@ -26,7 +26,7 @@ export default function MainPage() {
       {/* Hero */}
       <div className="hero-container p-5 my-4">
         <div className="hero-text">
-          <h1 className="hero-title display-5 fw-bold border-bottom opacity-75">CarCar</h1>
+          <h1 className="hero-title display-5 fw-bold border-bottom opacity-75">NexGenAuto</h1>
           <p className="hero-subtitle lead col-md-8 fs-4 opacity-75 pt-4">The premiere solution for automobile dealership management</p>
         </div>
         <Link className="hero-btn" to="/models">Models</Link>
@@ -49,7 +49,7 @@ export default function MainPage() {
               <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div className="offcanvas-body">
-              <p>At CarCar we pride ourselves in taking care of our partners inventory data like it's our own!</p>
+              <p>At NexGenAuto we pride ourselves in taking care of our partners inventory data like it's our own!</p>
               <p>There are three sub-categories (Manufacturers, Models, and Automobiles) in our Inventory section</p>
               <img src="/images/row-of-cars.avif" className="offcanvas-img" alt="Row of cars" />
               <hr />
@@ -85,7 +85,7 @@ export default function MainPage() {
               <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div className="offcanvas-body">
-              <p>At CarCar we pride ourselves in taking care of our partners Sales data like it's our own!</p>
+              <p>At NexGenAuto we pride ourselves in taking care of our partners Sales data like it's our own!</p>
               <p>There are three sub-categories (Salespeople, Customers, and Sales) in our Inventory section</p>
               <img src="/images/pexels-gustavo-fring-2.jpg" className="offcanvas-img" alt="Car salesman talking with customer" />
               <hr />
@@ -122,7 +122,7 @@ export default function MainPage() {
               <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div className="offcanvas-body">
-              <p>At CarCar we pride ourselves in taking care of our partners Servicing data like it's our own!</p>
+              <p>At NexGenAuto we pride ourselves in taking care of our partners Servicing data like it's our own!</p>
               <p>There are three sub-categories (Technicians, Service Appointments, and Service History) in our Services section</p>
               <img src="/images/auto-tech.jpg" className="offcanvas-img" alt="Car technician" />
               <hr />
@@ -175,18 +175,18 @@ export default function MainPage() {
           <img src="images/car-white-background.avif" className="mission-car" alt="White super car" />
           <h4> - Our Message to You -</h4>
           <p>
-            CarCar is dedicated to providing the top-of-the-line Dealership Management Software to you. From inventory, sales, and servicing,
-            CarCar provides intensive data management to streamline your business. Our comprehensive surplus of tools covers every single aspect
+            NexGenAuto is dedicated to providing the top-of-the-line Dealership Management Software to you. From inventory, sales, and servicing,
+            NexGenAuto provides intensive data management to streamline your business. Our comprehensive surplus of tools covers every single aspect
             of dealership operations - from inventory management and service scheduling to sales tracking and lorem ipsum.
           </p>
           <p>
-            CarCar's easy to use interface ensures that you and your team can quickly adapt and maximize productivity. Our advanced
+            NexGenAuto's easy to use interface ensures that you and your team can quickly adapt and maximize productivity. Our advanced
             data management system only optimizes workflow and business performance! Our software features real-time updates and seamless integration
             with all other systems. Another lorem ipsum to take up some space!
           </p>
           <p>
-            Thank you for choosing and trusting in CarCar as your Dealership Management Software partner. We are truly appreciative and
-            will always be commited to helping your business achieve its goals. Cheers!
+            Thank you for choosing and trusting in NexGenAuto as your Dealership Management Software partner. We are truly appreciative and
+            will always be commited to helping your business achieve its goals.
           </p>
         </div>
       </div>
