@@ -49,9 +49,9 @@ export default function CustomerList() {
                                     <hr />
                                     <p>Contact Information:</p>
                                     <div>{customer.phone_number}</div>
-                                    <div>{customer.address}</div>
-                                    <hr />
-                                    <p>Add purchases here</p>
+                                    <div className="mb-4">{customer.address}</div>
+                                    {/* <hr /> */}
+                                    {/* <p>Add purchases here</p> */}
                                 </div>
                             </div>
                         </div>
