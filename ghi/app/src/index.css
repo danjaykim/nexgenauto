@@ -12,6 +12,35 @@ code {
 		monospace;
 }
 
+/* Fonts */
+
+.hero-subtitle {
+	font-family: "Anek Devanagari", sans-serif;
+}
+
+p,
+h2,
+h3,
+h4,
+a,
+.dropdown-item,
+.main-nav,
+div,
+.salesperson-nosales {
+	font-family: "DM Sans";
+}
+
+/* Nav */
+
+.navbar-brand {
+	font-weight: 700;
+}
+
+.main-nav {
+	margin-top: .6rem;
+	letter-spacing: .3px;
+}
+
 .main-containers {
 	width: 90%;
 	max-width: 1400px;
@@ -51,6 +80,8 @@ code {
 	color: rgb(24, 33, 56);
 }
 
+/* Second section */
+
 .why-container-div {
 	width: 65%;
 	gap: 2.2rem;
@@ -62,6 +93,12 @@ code {
 	justify-content: center;
 	/* border: 1px solid black; */
 	padding: .5rem 0;
+}
+
+.arsenal-p {
+	font-size: 1.2rem;
+	font-weight: 500;
+	letter-spacing: .4px;
 }
 
 .circle-icon {
@@ -85,6 +122,20 @@ code {
 	padding-top: .7rem;
 	transition: .5s all;
 	cursor: pointer;
+}
+
+li {
+	list-style: none;
+	margin-bottom: .5rem;
+}
+
+.li-link {
+	text-decoration: none;
+}
+
+.li-link:hover {
+	border-bottom: 1px solid darkgray;
+	transition: .5s ease-in;
 }
 
 .offcanvas-img {
@@ -124,6 +175,10 @@ code {
 	width: 50%;
 }
 
+.fourth-section {
+	margin-bottom: 5rem;
+}
+
 /* Inventory - Manufacturers */
 
 .manu-title {
@@ -132,7 +187,11 @@ code {
 	border-bottom: 1px solid lightgray;
 }
 
-.manu-card:hover {
+.manu-card:hover,
+.auto-card:hover,
+.salesperson-card:hover,
+.customer-card:hover,
+.sale-card:hover {
 	box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 	transition: .5s all;
 }
@@ -154,14 +213,148 @@ code {
 	transition: .5s all;
 }
 
+/* Automobiles */
+
+/* .card.sold:hover {
+	background: red;
+}
+
+.card.available:hover {
+	background: green;
+} */
+
+.card:hover .sold {
+	font-size: 3rem;
+	transition: .5s all;
+	color: red;
+	font-weight: 600;
+}
+
+.card:hover .available {
+	font-size: 3rem;
+	transition: .5s all;
+	color: limegreen;
+	font-weight: 600;
+}
+
+/* Salespeople */
+
+.hs-div-container {
+	margin-top: 1rem;
+}
+
+.headshot-container {
+	border: 1px solid lightgray;
+	border-radius: 50%;
+	max-width: 200px;
+}
+
+.sp-name {
+	margin: 1rem 0 .5rem;
+	font-weight: 600;
+}
+
+
+/* Sale */
+
+.sale-card2 {
+	padding: 2rem;
+}
+
+
+/* Sale History */
+
+.sph-select {
+	max-width: 600px !important;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.sp-card-container {
+	margin-top: 4rem;
+}
+
+.sp-title {
+	text-align: center;
+	padding-bottom: 2rem;
+}
+
+.sp-name {
+	font-size: 2rem;
+}
+
+.sp-details {
+	font-size: 1.3rem;
+}
+
+.span {
+	font-size: 1.1rem;
+}
+
+.sp-customer {
+	margin: .2rem 0;
+}
+
+.salesperson-nosales {
+	font-size: 1.7rem;
+	text-align: center;
+	margin-top: 5rem;
+	color: red;
+}
+
+.salesperson-history-subtitle {
+	margin: 2rem 0;
+	text-align: center;
+}
+
+.sp-img-container {
+	border: 1px solid lightgray;
+	padding: 1rem;
+	border-radius: 6px;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+/* .sp-detail-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+} */
+
+.sp-body {
+	border: 1px solid lightgray;
+	border-radius: 6px;
+	margin-top: 3rem;
+	max-width: 900px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+}
+
+.sp-customer-container {
+	margin: .5rem 0 2rem;
+}
+
+.breathing-room {
+	margin: 2rem 0;
+}
+
+
+/* MEDIA QUERIES */
 
 @media (width > 1500px) {
 	.carousel {
 		max-width: 1500px;
 		margin: auto;
+		border: 1px solid darkgray;
+		border-radius: 8px;
+		padding: 2rem;
+
 	}
 
 	.carousel-inner {
 		border-radius: 5px;
 	}
+
 }

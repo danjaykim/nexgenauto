@@ -15,9 +15,17 @@ class AutomobileVO(models.Model):
 
 
 class Salesperson(models.Model):
+    DEFAULT_HEADSHOT_URL = "https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
+
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     employee_id = models.CharField(max_length=200, unique=True)
+    picture_url = models.URLField(
+        max_length=200,
+        blank=True,
+        null=True,
+        default=DEFAULT_HEADSHOT_URL,
+    )
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

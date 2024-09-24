@@ -10,6 +10,7 @@ export default function SalesPersonForm() {
         first_name: '',
         last_name: '',
         employee_id: '',
+        picture_url: '',
     });
 
     const navigate = useNavigate();
@@ -36,6 +37,7 @@ export default function SalesPersonForm() {
         event.preventDefault();
 
         const salespeopleUrl = "http://localhost:8090/api/salespeople/";
+
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(formData),
@@ -50,6 +52,7 @@ export default function SalesPersonForm() {
                     first_name: '',
                     last_name: '',
                     employee_id: '',
+                    picture_url: '',
                 })
 
                 navigate("/salespeople")
@@ -86,6 +89,11 @@ export default function SalesPersonForm() {
                             <input onChange={handleFormChange} value={formData.employee_id} placeholder="Employee ID" type="text" name="employee_id" id="employee_id"
                                 className="form-control" />
                             <label htmlFor="employee_id">Employee ID</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <input onChange={handleFormChange} value={formData.picture_url} placeholder="Picture" type="text" name="picture_url" id="picture_url"
+                                className="form-control" />
+                            <label htmlFor="picture_url">Picture URL (Headshot)</label>
                         </div>
                         <button type="submit" className="btn btn-primary mt-2">Create</button>
                     </form>
